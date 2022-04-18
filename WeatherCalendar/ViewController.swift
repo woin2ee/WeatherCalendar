@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  WeatherCalender
+//  WeatherCalendar
 //
 //  Created by Jaewon on 2022/04/11.
 //
