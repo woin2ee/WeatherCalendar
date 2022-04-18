@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E89E85CB28042BD100DDAB0C /* WeatherCalender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherCalender.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E89E85CB28042BD100DDAB0C /* WeatherCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89E85CE28042BD100DDAB0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E89E85D028042BD100DDAB0C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E89E85D228042BD100DDAB0C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 		E89E85C228042BD100DDAB0C = {
 			isa = PBXGroup;
 			children = (
-				E89E85CD28042BD100DDAB0C /* WeatherCalender */,
+				E89E85CD28042BD100DDAB0C /* WeatherCalendar */,
 				E89E85CC28042BD100DDAB0C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,12 +48,12 @@
 		E89E85CC28042BD100DDAB0C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E89E85CB28042BD100DDAB0C /* WeatherCalender.app */,
+				E89E85CB28042BD100DDAB0C /* WeatherCalendar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E89E85CD28042BD100DDAB0C /* WeatherCalender */ = {
+		E89E85CD28042BD100DDAB0C /* WeatherCalendar */ = {
 			isa = PBXGroup;
 			children = (
 				E89E85CE28042BD100DDAB0C /* AppDelegate.swift */,
@@ -64,15 +64,15 @@
 				E89E85D928042BD300DDAB0C /* LaunchScreen.storyboard */,
 				E89E85DC28042BD300DDAB0C /* Info.plist */,
 			);
-			path = WeatherCalender;
+			path = WeatherCalendar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E89E85CA28042BD100DDAB0C /* WeatherCalender */ = {
+		E89E85CA28042BD100DDAB0C /* WeatherCalendar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E89E85DF28042BD300DDAB0C /* Build configuration list for PBXNativeTarget "WeatherCalender" */;
+			buildConfigurationList = E89E85DF28042BD300DDAB0C /* Build configuration list for PBXNativeTarget "WeatherCalendar" */;
 			buildPhases = (
 				E89E85C728042BD100DDAB0C /* Sources */,
 				E89E85C828042BD100DDAB0C /* Frameworks */,
@@ -82,9 +82,9 @@
 			);
 			dependencies = (
 			);
-			name = WeatherCalender;
+			name = WeatherCalendar;
 			productName = WeatherCalender;
-			productReference = E89E85CB28042BD100DDAB0C /* WeatherCalender.app */;
+			productReference = E89E85CB28042BD100DDAB0C /* WeatherCalendar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +102,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E89E85C628042BD100DDAB0C /* Build configuration list for PBXProject "WeatherCalender" */;
+			buildConfigurationList = E89E85C628042BD100DDAB0C /* Build configuration list for PBXProject "WeatherCalendar" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E89E85CA28042BD100DDAB0C /* WeatherCalender */,
+				E89E85CA28042BD100DDAB0C /* WeatherCalendar */,
 			);
 		};
 /* End PBXProject section */
@@ -289,7 +289,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2AVC8X7323;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherCalender/Info.plist;
+				INFOPLIST_FILE = WeatherCalendar/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -301,7 +301,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MacMorning.WeatherCalender;
+				PRODUCT_BUNDLE_IDENTIFIER = MacMorning.WeatherCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -318,7 +318,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2AVC8X7323;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherCalender/Info.plist;
+				INFOPLIST_FILE = WeatherCalendar/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -330,7 +330,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MacMorning.WeatherCalender;
+				PRODUCT_BUNDLE_IDENTIFIER = MacMorning.WeatherCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -341,7 +341,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E89E85C628042BD100DDAB0C /* Build configuration list for PBXProject "WeatherCalender" */ = {
+		E89E85C628042BD100DDAB0C /* Build configuration list for PBXProject "WeatherCalendar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E89E85DD28042BD300DDAB0C /* Debug */,
@@ -350,7 +350,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E89E85DF28042BD300DDAB0C /* Build configuration list for PBXNativeTarget "WeatherCalender" */ = {
+		E89E85DF28042BD300DDAB0C /* Build configuration list for PBXNativeTarget "WeatherCalendar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E89E85E028042BD300DDAB0C /* Debug */,
