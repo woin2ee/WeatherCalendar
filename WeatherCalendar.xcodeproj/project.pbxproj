@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78BB208475E68E58E8175D95 /* Pods_WeatherCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB4F553F0F66D2FDFC99A569 /* Pods_WeatherCalendar.framework */; };
 		E89E85CF28042BD100DDAB0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E85CE28042BD100DDAB0C /* AppDelegate.swift */; };
 		E89E85D128042BD100DDAB0C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E85D028042BD100DDAB0C /* SceneDelegate.swift */; };
 		E89E85D328042BD100DDAB0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E85D228042BD100DDAB0C /* ViewController.swift */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E69427662F97E0EF4FA598B /* Pods-WeatherCalendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherCalendar.debug.xcconfig"; path = "Target Support Files/Pods-WeatherCalendar/Pods-WeatherCalendar.debug.xcconfig"; sourceTree = "<group>"; };
+		A14227019291EADF1371BC69 /* Pods-WeatherCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherCalendar.release.xcconfig"; path = "Target Support Files/Pods-WeatherCalendar/Pods-WeatherCalendar.release.xcconfig"; sourceTree = "<group>"; };
 		E89E85CB28042BD100DDAB0C /* WeatherCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89E85CE28042BD100DDAB0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E89E85D028042BD100DDAB0C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		E89E85D728042BD200DDAB0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E89E85DA28042BD300DDAB0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E89E85DC28042BD300DDAB0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB4F553F0F66D2FDFC99A569 /* Pods_WeatherCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78BB208475E68E58E8175D95 /* Pods_WeatherCalendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DA918760CC8C08895FDD11B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB4F553F0F66D2FDFC99A569 /* Pods_WeatherCalendar.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4B88D1E571BD3532BE5847D3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0E69427662F97E0EF4FA598B /* Pods-WeatherCalendar.debug.xcconfig */,
+				A14227019291EADF1371BC69 /* Pods-WeatherCalendar.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E89E85C228042BD100DDAB0C = {
 			isa = PBXGroup;
 			children = (
 				E89E85CD28042BD100DDAB0C /* WeatherCalendar */,
 				E89E85CC28042BD100DDAB0C /* Products */,
+				4B88D1E571BD3532BE5847D3 /* Pods */,
+				2DA918760CC8C08895FDD11B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E89E85DF28042BD300DDAB0C /* Build configuration list for PBXNativeTarget "WeatherCalendar" */;
 			buildPhases = (
+				F81A3C4738BF6F9B71DA5EE1 /* [CP] Check Pods Manifest.lock */,
 				E89E85C728042BD100DDAB0C /* Sources */,
 				E89E85C828042BD100DDAB0C /* Frameworks */,
 				E89E85C928042BD100DDAB0C /* Resources */,
+				156059A2A2FE90F7A57D558C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		156059A2A2FE90F7A57D558C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WeatherCalendar/Pods-WeatherCalendar-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WeatherCalendar/Pods-WeatherCalendar-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeatherCalendar/Pods-WeatherCalendar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F81A3C4738BF6F9B71DA5EE1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WeatherCalendar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E89E85C728042BD100DDAB0C /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		E89E85E028042BD300DDAB0C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E69427662F97E0EF4FA598B /* Pods-WeatherCalendar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -312,6 +382,7 @@
 		};
 		E89E85E128042BD300DDAB0C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A14227019291EADF1371BC69 /* Pods-WeatherCalendar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
