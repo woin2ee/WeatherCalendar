@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ge1-7I-Lzj" customClass="FSCalendar">
-                                <rect key="frame" x="15" y="44" width="384" height="500"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="500"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="500" id="BcR-po-UXp"/>
@@ -27,8 +27,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ge1-7I-Lzj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="7bc-0X-Ct2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ge1-7I-Lzj" secondAttribute="trailing" constant="15" id="W53-vG-Nd1"/>
+                            <constraint firstItem="Ge1-7I-Lzj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7bc-0X-Ct2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ge1-7I-Lzj" secondAttribute="trailing" id="W53-vG-Nd1"/>
                             <constraint firstItem="Ge1-7I-Lzj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Wz2-hU-DjD"/>
                         </constraints>
                     </view>
