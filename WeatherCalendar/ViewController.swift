@@ -63,6 +63,7 @@ class ViewController: UIViewController {
     
 }
 
+// FSCalender extension
 extension ViewController: FSCalendarDataSource, FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let dateFormatter = DateFormatter()
@@ -93,6 +94,7 @@ extension ViewController: FSCalendarDataSource, FSCalendarDelegate {
     }
 }
 
+// TableView extension
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoItem.count
