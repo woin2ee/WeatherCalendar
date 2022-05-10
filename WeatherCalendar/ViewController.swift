@@ -54,7 +54,9 @@ class ViewController: UIViewController {
                 debugPrint("decode 실패")
                 return
             }
-            print(weatherInfo)
+            
+            print(weatherInfo.current.printCurrentTime())
+            
         }.resume()
         
     }

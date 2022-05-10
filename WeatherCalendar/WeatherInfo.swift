@@ -19,6 +19,18 @@ struct Current: Codable {
     let dt: Int
     let temp: Double
     let weather: [Weather]
+    
+    func printCurrentTime() {
+        let now = Date(timeIntervalSince1970: Double(dt))
+        let formatter: DateFormatter = {
+            let df = DateFormatter()
+            df.locale = Locale(identifier: "ko_KR")
+            df.timeZone = TimeZone(abbreviation: "KST")
+            df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            return df
+        }()
+        print("now: \(formatter.string(from: now))")
+    }
 }
 
 struct Weather: Codable {
