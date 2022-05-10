@@ -8,6 +8,10 @@
 import UIKit
 import FSCalendar // https://github.com/WenchaoD/FSCalendar
 
+enum APIOptions {
+    case current, hourly, daily
+}
+
 class ViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var todoTable: UITableView!
@@ -26,7 +30,10 @@ class ViewController: UIViewController {
         
         Task {
             // Asia/Seoul - (lat: 37.5683 , lon: 126.9778)
-            try? await getCurrentWeatherInfo(lat: 37.5683, lon: 126.9778)?.current.printCurrentTime()
+            try? await getWeatherInfo(lat: 37.5683, lon: 126.9778, .current)?.current?.printDataTime()
+            try? await getWeatherInfo(lat: 37.5683, lon: 126.9778, .hourly)?.hourly?.first?.printDataTime()
+            try? await getWeatherInfo(lat: 37.5683, lon: 126.9778, .daily)?.daily?.first?.printDataTime()
+            try? await getWeatherInfo(lat: 37.5683, lon: 126.9778, .daily)?.daily?.last?.printDataTime()
         }
 
     }
@@ -38,9 +45,19 @@ class ViewController: UIViewController {
         todoTable.delegate = self
     }
     
-    private func getCurrentWeatherInfo(lat: Double, lon: Double) async throws -> WeatherInfo? {
+    /// - Parameter options: [current: 현재 시각의 날씨 데이터, hourly: 현재 시각 기준 48시간의 예측 데이터, daily: 오늘 기준 7일 동안의 예측 데이터]
+    private func getWeatherInfo(lat: Double, lon: Double, _ option: APIOptions) async throws -> WeatherInfo? {
+        let excludeString: String
+        switch option {
+        case .current:
+            excludeString = "minutely,alerts,hourly,daily"
+        case .hourly:
+            excludeString = "minutely,alerts,current,daily"
+        case .daily:
+            excludeString = "minutely,alerts,hourly,current"
+        }
         // URL 형식 참조: https://openweathermap.org/api/one-call-api
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&exclude=minutely,hourly,daily,alerts&appid=\(Storage.API_KEY)")
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&exclude=\(excludeString)&appid=\(Storage.API_KEY)")
         else {
             debugPrint(#function)
             return nil

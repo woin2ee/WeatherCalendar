@@ -7,20 +7,32 @@
 
 import Foundation
 
-struct WeatherInfo: Codable {
+class WeatherInfo: Codable {
     let lat: Double
     let lon: Double
     let timezone: String
     let timezone_offset: Int
-    let current: Current
+    var current: Current? = nil
+    var hourly: [Hourly]? = nil
+    var daily: [Daily]? = nil
 }
 
-struct Current: Codable {
+class Current: DefaultWeatherInfo {
+    var temp: Double = 0
+}
+
+class Hourly: DefaultWeatherInfo {
+    var temp: Double = 0
+}
+
+class Daily: DefaultWeatherInfo {
+}
+
+class DefaultWeatherInfo: Codable {
     let dt: Int
-    let temp: Double
     let weather: [Weather]
     
-    func printCurrentTime() {
+    func printDataTime() {
         let now = Date(timeIntervalSince1970: Double(dt))
         let formatter: DateFormatter = {
             let df = DateFormatter()
