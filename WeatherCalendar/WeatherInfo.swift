@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WeatherInfo: Codable {
+struct WeatherInfo: Codable {
     let lat: Double
     let lon: Double
     let timezone: String
@@ -17,19 +17,15 @@ class WeatherInfo: Codable {
     var daily: [Daily]? = nil
 }
 
-class Current: DefaultWeatherInfo {
-    var temp: Double = 0
-}
-
-class Hourly: DefaultWeatherInfo {
-    var temp: Double = 0
-}
-
-class Daily: DefaultWeatherInfo {
-}
-
-class DefaultWeatherInfo: Codable {
+struct Current: Codable {
     let dt: Int
+    let temp: Double
+    let weather: [Weather]
+}
+
+struct Hourly: Codable {
+    let dt: Int
+    let temp: Double
     let weather: [Weather]
     
     func printDataTime() {
@@ -41,6 +37,11 @@ class DefaultWeatherInfo: Codable {
         }()
         print("now: \(formatter.string(from: now))")
     }
+}
+
+struct Daily: Codable {
+    let dt: Int
+    let weather: [Weather]
 }
 
 struct Weather: Codable {
