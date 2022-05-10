@@ -430,6 +430,7 @@
                     <connections>
                         <outlet property="calendar" destination="Ge1-7I-Lzj" id="Wm0-Tm-Ssq"/>
                         <outlet property="todoTable" destination="Db9-JT-gtI" id="I9W-if-6O4"/>
+                        <outlet property="weatherStack" destination="dXp-ZU-EFY" id="YOG-le-FX0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

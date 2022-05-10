@@ -11,56 +11,56 @@ import FSCalendar // https://github.com/WenchaoD/FSCalendar
 class ViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var todoTable: UITableView!
-    
+    @IBOutlet weak var weatherStack: UIStackView!
     let todoItem = ["One", "Two"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        calendar.dataSource = self
-        calendar.delegate = self
-        todoTable.dataSource = self
-        todoTable.delegate = self
-        
-        self.setAppearance(of: calendar.appearance)
+        setDataSourceAndDelegate()
+        setAppearance(of: calendar.appearance)
         
         // weekday 한/영 설정
         calendar.locale = Locale(identifier: "ko_KR")
 //        calendar.locale = Locale(identifier: "en_EN")
         
-        
-        
-        // Asia/Seoul 오늘 날씨 가져오기
-        getCurrentWeatherInfo(lat: 37.5683, lon: 126.9778)
-        
-        
-    }
-    
-    // Asia/Seoul : 37.5683 , 126.9778
-    // https://openweathermap.org/api/one-call-api
-    private func getCurrentWeatherInfo(lat: Double, lon: Double) {
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&exclude=minutely,hourly,daily,alerts&appid=\(Storage.API_KEY)") else {
-            debugPrint("유효하지 않은 URL입니다.")
-            return
+        Task {
+            // Asia/Seoul - (lat: 37.5683 , lon: 126.9778)
+            try? await getCurrentWeatherInfo(lat: 37.5683, lon: 126.9778)?.current.printCurrentTime()
         }
-        
-        let session = URLSession(configuration: .default)
-        session.dataTask(with: url) { data, urlResponse, error in
-            guard let data = data, error == nil else {
-                debugPrint("data를 가져오지 못했습니다.")
-                return
-            }
-            guard let weatherInfo = try? JSONDecoder().decode(WeatherInfo.self, from: data) else {
-                debugPrint("decode 실패")
-                return
-            }
-            
-            print(weatherInfo.current.printCurrentTime())
-            
-        }.resume()
-        
+
     }
     
+    private func setDataSourceAndDelegate() {
+        calendar.dataSource = self
+        calendar.delegate = self
+        todoTable.dataSource = self
+        todoTable.delegate = self
+    }
+    
+    private func getCurrentWeatherInfo(lat: Double, lon: Double) async throws -> WeatherInfo? {
+        // URL 형식 참조: https://openweathermap.org/api/one-call-api
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&exclude=minutely,hourly,daily,alerts&appid=\(Storage.API_KEY)")
+        else {
+            debugPrint(#function)
+            return nil
+        }
+        let (data, response) = try await URLSession.shared.data(from: url) // url 요청이 실패하면 throw
+        let successRange = 200..<300
+        guard successRange.contains((response as? HTTPURLResponse)?.statusCode ?? 0) else {
+            debugPrint(#function)
+            return nil
+        }
+        return try JSONDecoder().decode(WeatherInfo.self, from: data) // decode 실패하면 throw
+    }
+//
+//    private func 날짜가선택됨() {
+//        스택뷰에로딩표시()
+//        날씨정보를받아옴()
+//        날씨정보로시간별서브뷰배열생성()
+//        스택뷰에로딩표시지움()
+//        스택뷰에일괄추가()
+//    }
 }
 
 // FSCalender extension
@@ -71,7 +71,6 @@ extension ViewController: FSCalendarDataSource, FSCalendarDelegate {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         print(dateFormatter.string(from: date) + "선택 됨")
-        
     }
     
     func setAppearance(of ca: FSCalendarAppearance) {
