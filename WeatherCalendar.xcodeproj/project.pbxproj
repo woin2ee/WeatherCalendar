@@ -16,6 +16,7 @@
 		E89E85D628042BD100DDAB0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89E85D428042BD100DDAB0C /* Main.storyboard */; };
 		E89E85D828042BD200DDAB0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E89E85D728042BD200DDAB0C /* Assets.xcassets */; };
 		E89E85DB28042BD300DDAB0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89E85D928042BD300DDAB0C /* LaunchScreen.storyboard */; };
+		E8AE22E5282AC8C8000681C0 /* KRDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE22E4282AC8C8000681C0 /* KRDateFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		E89E85D728042BD200DDAB0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E89E85DA28042BD300DDAB0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E89E85DC28042BD300DDAB0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8AE22E4282AC8C8000681C0 /* KRDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KRDateFormatter.swift; sourceTree = "<group>"; };
 		FB4F553F0F66D2FDFC99A569 /* Pods_WeatherCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -87,6 +89,7 @@
 				E89E85CE28042BD100DDAB0C /* AppDelegate.swift */,
 				E89E85D028042BD100DDAB0C /* SceneDelegate.swift */,
 				E89E85D228042BD100DDAB0C /* ViewController.swift */,
+				E8AE22E4282AC8C8000681C0 /* KRDateFormatter.swift */,
 				E86E1760282984C400D327B7 /* WeatherInfo.swift */,
 				E86E175E28297D2B00D327B7 /* Storage.swift */,
 				E89E85D428042BD100DDAB0C /* Main.storyboard */,
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E89E85D328042BD100DDAB0C /* ViewController.swift in Sources */,
+				E8AE22E5282AC8C8000681C0 /* KRDateFormatter.swift in Sources */,
 				E86E175F28297D2B00D327B7 /* Storage.swift in Sources */,
 				E89E85CF28042BD100DDAB0C /* AppDelegate.swift in Sources */,
 				E89E85D128042BD100DDAB0C /* SceneDelegate.swift in Sources */,

@@ -34,10 +34,8 @@ class DefaultWeatherInfo: Codable {
     
     func printDataTime() {
         let now = Date(timeIntervalSince1970: Double(dt))
-        let formatter: DateFormatter = {
-            let df = DateFormatter()
-            df.locale = Locale(identifier: "ko_KR")
-            df.timeZone = TimeZone(abbreviation: "KST")
+        let formatter: KRDateFormatter = {
+            let df = KRDateFormatter()
             df.dateFormat = "yyyy-MM-dd HH:mm:ss"
             return df
         }()
