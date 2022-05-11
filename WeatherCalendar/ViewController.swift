@@ -39,6 +39,24 @@ class ViewController: UIViewController {
         todoTable.delegate = self
     }
     
+    func setAppearance(of ca: FSCalendarAppearance) {
+        ca.headerTitleColor = .red
+        ca.weekdayTextColor = .red
+        
+        ca.eventSelectionColor = .green
+        ca.eventDefaultColor = .yellow
+        
+        ca.selectionColor = .brown
+        ca.todayColor = .blue
+        
+        ca.todaySelectionColor = .red
+        
+        ca.headerDateFormat = "M월"
+        
+        ca.headerMinimumDissolvedAlpha = 0.0
+        
+        ca.borderRadius = 0
+    }
     
     private func setWeatherSV() {
         Task {
@@ -143,25 +161,6 @@ extension ViewController: FSCalendarDataSource, FSCalendarDelegate {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         print(dateFormatter.string(from: date) + "선택 됨")
-    }
-    
-    func setAppearance(of ca: FSCalendarAppearance) {
-        ca.headerTitleColor = .red
-        ca.weekdayTextColor = .red
-        
-        ca.eventSelectionColor = .green
-        ca.eventDefaultColor = .yellow
-        
-        ca.selectionColor = .brown
-        ca.todayColor = .blue
-        
-        ca.todaySelectionColor = .red
-        
-        ca.headerDateFormat = "M월"
-        
-        ca.headerMinimumDissolvedAlpha = 0.0
-        
-        ca.borderRadius = 0
     }
 }
 
