@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		78BB208475E68E58E8175D95 /* Pods_WeatherCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB4F553F0F66D2FDFC99A569 /* Pods_WeatherCalendar.framework */; };
-		E86E175F28297D2B00D327B7 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E175E28297D2B00D327B7 /* Storage.swift */; };
 		E86E1761282984C400D327B7 /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E1760282984C400D327B7 /* WeatherInfo.swift */; };
 		E89E85CF28042BD100DDAB0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E85CE28042BD100DDAB0C /* AppDelegate.swift */; };
 		E89E85D128042BD100DDAB0C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E85D028042BD100DDAB0C /* SceneDelegate.swift */; };
@@ -17,12 +16,14 @@
 		E89E85D828042BD200DDAB0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E89E85D728042BD200DDAB0C /* Assets.xcassets */; };
 		E89E85DB28042BD300DDAB0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89E85D928042BD300DDAB0C /* LaunchScreen.storyboard */; };
 		E8AE22E5282AC8C8000681C0 /* KRDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE22E4282AC8C8000681C0 /* KRDateFormatter.swift */; };
+		E8DD19A6282BFD8D00D5FC78 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD19A5282BFD8D00D5FC78 /* Storage.swift */; };
+		E8FEDA50282C0A090051E8B0 /* WeatherSVSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FEDA4F282C0A090051E8B0 /* WeatherSVSubView.swift */; };
+		E8FEDA52282C0EA90051E8B0 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FEDA51282C0EA90051E8B0 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0E69427662F97E0EF4FA598B /* Pods-WeatherCalendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherCalendar.debug.xcconfig"; path = "Target Support Files/Pods-WeatherCalendar/Pods-WeatherCalendar.debug.xcconfig"; sourceTree = "<group>"; };
 		A14227019291EADF1371BC69 /* Pods-WeatherCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherCalendar.release.xcconfig"; path = "Target Support Files/Pods-WeatherCalendar/Pods-WeatherCalendar.release.xcconfig"; sourceTree = "<group>"; };
-		E86E175E28297D2B00D327B7 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		E86E1760282984C400D327B7 /* WeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
 		E89E85CB28042BD100DDAB0C /* WeatherCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89E85CE28042BD100DDAB0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -33,6 +34,9 @@
 		E89E85DA28042BD300DDAB0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E89E85DC28042BD300DDAB0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8AE22E4282AC8C8000681C0 /* KRDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KRDateFormatter.swift; sourceTree = "<group>"; };
+		E8DD19A5282BFD8D00D5FC78 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		E8FEDA4F282C0A090051E8B0 /* WeatherSVSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSVSubView.swift; sourceTree = "<group>"; };
+		E8FEDA51282C0EA90051E8B0 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FB4F553F0F66D2FDFC99A569 /* Pods_WeatherCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -89,15 +93,25 @@
 				E89E85CE28042BD100DDAB0C /* AppDelegate.swift */,
 				E89E85D028042BD100DDAB0C /* SceneDelegate.swift */,
 				E89E85D228042BD100DDAB0C /* ViewController.swift */,
+				E8FEDA4F282C0A090051E8B0 /* WeatherSVSubView.swift */,
+				E8FEDA51282C0EA90051E8B0 /* Location.swift */,
 				E8AE22E4282AC8C8000681C0 /* KRDateFormatter.swift */,
-				E86E1760282984C400D327B7 /* WeatherInfo.swift */,
-				E86E175E28297D2B00D327B7 /* Storage.swift */,
+				E8DD19A4282BEF7C00D5FC78 /* Model */,
+				E8DD19A5282BFD8D00D5FC78 /* Storage.swift */,
 				E89E85D428042BD100DDAB0C /* Main.storyboard */,
 				E89E85D728042BD200DDAB0C /* Assets.xcassets */,
 				E89E85D928042BD300DDAB0C /* LaunchScreen.storyboard */,
 				E89E85DC28042BD300DDAB0C /* Info.plist */,
 			);
 			path = WeatherCalendar;
+			sourceTree = "<group>";
+		};
+		E8DD19A4282BEF7C00D5FC78 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E86E1760282984C400D327B7 /* WeatherInfo.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,10 +231,12 @@
 			files = (
 				E89E85D328042BD100DDAB0C /* ViewController.swift in Sources */,
 				E8AE22E5282AC8C8000681C0 /* KRDateFormatter.swift in Sources */,
-				E86E175F28297D2B00D327B7 /* Storage.swift in Sources */,
+				E8FEDA52282C0EA90051E8B0 /* Location.swift in Sources */,
 				E89E85CF28042BD100DDAB0C /* AppDelegate.swift in Sources */,
+				E8FEDA50282C0A090051E8B0 /* WeatherSVSubView.swift in Sources */,
 				E89E85D128042BD100DDAB0C /* SceneDelegate.swift in Sources */,
 				E86E1761282984C400D327B7 /* WeatherInfo.swift in Sources */,
+				E8DD19A6282BFD8D00D5FC78 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
