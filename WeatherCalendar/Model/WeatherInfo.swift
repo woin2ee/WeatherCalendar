@@ -61,6 +61,7 @@ struct Hourly: Codable {
     let temp: Double
     let weather: [Weather]
     
+    // Debug용 확인 함수
     func printDataTime() {
         let now = Date(timeIntervalSince1970: Double(dt))
         let formatter: KRDateFormatter = {
