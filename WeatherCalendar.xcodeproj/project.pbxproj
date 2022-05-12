@@ -94,16 +94,24 @@
 				E89E85D028042BD100DDAB0C /* SceneDelegate.swift */,
 				E89E85D228042BD100DDAB0C /* ViewController.swift */,
 				E8FEDA4F282C0A090051E8B0 /* WeatherSVSubView.swift */,
-				E8FEDA51282C0EA90051E8B0 /* Location.swift */,
 				E8AE22E4282AC8C8000681C0 /* KRDateFormatter.swift */,
+				E8DB283E282CB86D00D98141 /* Literal */,
 				E8DD19A4282BEF7C00D5FC78 /* Model */,
-				E8DD19A5282BFD8D00D5FC78 /* Storage.swift */,
 				E89E85D428042BD100DDAB0C /* Main.storyboard */,
 				E89E85D728042BD200DDAB0C /* Assets.xcassets */,
 				E89E85D928042BD300DDAB0C /* LaunchScreen.storyboard */,
 				E89E85DC28042BD300DDAB0C /* Info.plist */,
 			);
 			path = WeatherCalendar;
+			sourceTree = "<group>";
+		};
+		E8DB283E282CB86D00D98141 /* Literal */ = {
+			isa = PBXGroup;
+			children = (
+				E8FEDA51282C0EA90051E8B0 /* Location.swift */,
+				E8DD19A5282BFD8D00D5FC78 /* Storage.swift */,
+			);
+			path = Literal;
 			sourceTree = "<group>";
 		};
 		E8DD19A4282BEF7C00D5FC78 /* Model */ = {
