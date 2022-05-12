@@ -9,10 +9,10 @@ import UIKit
 import SnapKit
 
 class WeatherSVSubView: UIView {
-    static let formatter: KRDateFormatter = {
-        let formatter = KRDateFormatter()
-        formatter.dateFormat = "HH:mm"
-        return formatter
+    static let formatter: DateFormatter = {
+        let df = CustomDateFormatter.kr()
+        df.dateFormat = "HH:mm"
+        return df
     }()
     
     // 날씨 표시가 오래걸리는 이유? - Assets에 파일로 넣는것 고려

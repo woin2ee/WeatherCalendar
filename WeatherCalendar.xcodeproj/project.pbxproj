@@ -15,7 +15,8 @@
 		E89E85D628042BD100DDAB0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89E85D428042BD100DDAB0C /* Main.storyboard */; };
 		E89E85D828042BD200DDAB0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E89E85D728042BD200DDAB0C /* Assets.xcassets */; };
 		E89E85DB28042BD300DDAB0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89E85D928042BD300DDAB0C /* LaunchScreen.storyboard */; };
-		E8AE22E5282AC8C8000681C0 /* KRDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE22E4282AC8C8000681C0 /* KRDateFormatter.swift */; };
+		E8DB2840282CC23200D98141 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB283F282CC23200D98141 /* Todo.swift */; };
+		E8DB2842282CC99B00D98141 /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB2841282CC99B00D98141 /* CustomDateFormatter.swift */; };
 		E8DD19A6282BFD8D00D5FC78 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD19A5282BFD8D00D5FC78 /* Storage.swift */; };
 		E8FEDA50282C0A090051E8B0 /* WeatherSVSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FEDA4F282C0A090051E8B0 /* WeatherSVSubView.swift */; };
 		E8FEDA52282C0EA90051E8B0 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FEDA51282C0EA90051E8B0 /* Location.swift */; };
@@ -33,7 +34,8 @@
 		E89E85D728042BD200DDAB0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E89E85DA28042BD300DDAB0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E89E85DC28042BD300DDAB0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E8AE22E4282AC8C8000681C0 /* KRDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KRDateFormatter.swift; sourceTree = "<group>"; };
+		E8DB283F282CC23200D98141 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		E8DB2841282CC99B00D98141 /* CustomDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
 		E8DD19A5282BFD8D00D5FC78 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		E8FEDA4F282C0A090051E8B0 /* WeatherSVSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSVSubView.swift; sourceTree = "<group>"; };
 		E8FEDA51282C0EA90051E8B0 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -94,7 +96,7 @@
 				E89E85D028042BD100DDAB0C /* SceneDelegate.swift */,
 				E89E85D228042BD100DDAB0C /* ViewController.swift */,
 				E8FEDA4F282C0A090051E8B0 /* WeatherSVSubView.swift */,
-				E8AE22E4282AC8C8000681C0 /* KRDateFormatter.swift */,
+				E8DB2841282CC99B00D98141 /* CustomDateFormatter.swift */,
 				E8DB283E282CB86D00D98141 /* Literal */,
 				E8DD19A4282BEF7C00D5FC78 /* Model */,
 				E89E85D428042BD100DDAB0C /* Main.storyboard */,
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				E86E1760282984C400D327B7 /* WeatherInfo.swift */,
+				E8DB283F282CC23200D98141 /* Todo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -238,9 +241,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E89E85D328042BD100DDAB0C /* ViewController.swift in Sources */,
-				E8AE22E5282AC8C8000681C0 /* KRDateFormatter.swift in Sources */,
+				E8DB2840282CC23200D98141 /* Todo.swift in Sources */,
 				E8FEDA52282C0EA90051E8B0 /* Location.swift in Sources */,
 				E89E85CF28042BD100DDAB0C /* AppDelegate.swift in Sources */,
+				E8DB2842282CC99B00D98141 /* CustomDateFormatter.swift in Sources */,
 				E8FEDA50282C0A090051E8B0 /* WeatherSVSubView.swift in Sources */,
 				E89E85D128042BD100DDAB0C /* SceneDelegate.swift in Sources */,
 				E86E1761282984C400D327B7 /* WeatherInfo.swift in Sources */,

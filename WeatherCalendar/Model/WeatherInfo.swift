@@ -64,8 +64,8 @@ struct Hourly: Codable {
     // Debug용 확인 함수
     func printDataTime() {
         let now = Date(timeIntervalSince1970: Double(dt))
-        let formatter: KRDateFormatter = {
-            let df = KRDateFormatter()
+        let formatter: DateFormatter = {
+            let df = CustomDateFormatter.kr()
             df.dateFormat = "yyyy-MM-dd HH:mm:ss"
             return df
         }()
