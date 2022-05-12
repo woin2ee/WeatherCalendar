@@ -9,28 +9,13 @@ import UIKit
 import SnapKit
 
 class WeatherSVSubView: UIView {
-    let formatter: KRDateFormatter = {
+    static let formatter: KRDateFormatter = {
         let formatter = KRDateFormatter()
         formatter.dateFormat = "HH:mm"
         return formatter
     }()
     
-    var hourLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.textAlignment = .center
-        return lbl
-    }()
-    var weatherIcon: UIImageView = {
-        let icon = UIImageView()
-        icon.contentMode = .scaleAspectFit
-        return icon
-    }()
-    var temperatureLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.textAlignment = .center
-        return lbl
-    }()
-    
+    // 날씨 표시가 오래걸리는 이유? - Assets에 파일로 넣는것 고려
     class WeatherIcon: UIImage {
         static func from(id: String) throws -> UIImage? {
             let url = URL(string: "http://openweathermap.org/img/wn/\(id)@2x.png")
@@ -38,16 +23,24 @@ class WeatherSVSubView: UIView {
             return UIImage(data: data)
         }
     }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func of(dt: Double, temp kelvin: Double, iconId: String) -> UIView {
+
+    static func of(dt: Double, temp kelvin: Double, iconId: String) -> UIView {
+        let hourLabel: UILabel = {
+            let lbl = UILabel()
+            lbl.textAlignment = .center
+            return lbl
+        }()
+        let weatherIcon: UIImageView = {
+            let icon = UIImageView()
+            icon.contentMode = .scaleAspectFit
+            return icon
+        }()
+        let temperatureLabel: UILabel = {
+            let lbl = UILabel()
+            lbl.textAlignment = .center
+            return lbl
+        }()
+        
         let now = Date(timeIntervalSince1970: dt)
         let icon = try? WeatherIcon.from(id: iconId)
         let celsius = kelvin - 273.16
@@ -56,7 +49,7 @@ class WeatherSVSubView: UIView {
         weatherIcon.image = icon
         temperatureLabel.text = "\(Int(celsius))°"
         
-        let subView: UIView = {
+        let view: UIView = {
             let view = UIView()
             view.addSubview(hourLabel)
             view.addSubview(weatherIcon)
@@ -64,24 +57,24 @@ class WeatherSVSubView: UIView {
             return view
         }()
         
-        setConstraintsOfSubViews()
+        setConstraints(of: view.subviews)
         
-        return subView
+        return view
     }
     
-    private func setConstraintsOfSubViews() {
-        hourLabel.snp.makeConstraints {
+    private static func setConstraints(of views: [UIView]) {
+        views[0].snp.makeConstraints {
             $0.leading.trailing.top.equalToSuperview()
             $0.height.equalTo(15)
         }
-        weatherIcon.snp.makeConstraints {
+        views[1].snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
-            $0.top.equalTo(hourLabel.snp.bottom).offset(2)
+            $0.top.equalTo(views[0].snp.bottom).offset(2)
             $0.height.equalTo(40)
         }
-        temperatureLabel.snp.makeConstraints {
+        views[2].snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.top.equalTo(weatherIcon.snp.bottom).offset(2)
+            $0.top.equalTo(views[1].snp.bottom).offset(2)
         }
     }
 }

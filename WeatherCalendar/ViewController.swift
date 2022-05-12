@@ -67,7 +67,7 @@ class ViewController: UIViewController {
             }
             let startIndex = hourlyInfo.startIndex
             for i in startIndex..<startIndex + subViewCount {
-                let subView = WeatherSVSubView().of(dt: Double(hourlyInfo[i].dt), temp: hourlyInfo[i].temp, iconId: hourlyInfo[i].weather[0].icon)
+                let subView = WeatherSVSubView.of(dt: Double(hourlyInfo[i].dt), temp: hourlyInfo[i].temp, iconId: hourlyInfo[i].weather[0].icon)
                 weatherSV.addArrangedSubview(subView)
                 subView.snp.makeConstraints {
                     $0.width.equalTo(60)
