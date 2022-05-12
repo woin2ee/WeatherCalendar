@@ -81,14 +81,8 @@ class ViewController: UIViewController {
 extension ViewController: FSCalendarDataSource, FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let date = CustomDateFormatter.forTodo().string(from: date)
-        
-        // 키값 확인용 함수
-        debugPrint(date)
-        
-        // todoItem 교체 부분
         todoItem = Todo.getItem(as: date)
-        
-        todoTable.reloadData() // sectionUpate 함수로 교체
+        todoTable.reloadSections(IndexSet(0...0), with: .automatic)
     }
 }
 
