@@ -34,19 +34,11 @@ struct WeatherInfo: Codable {
             excludeString = "minutely,alerts"
         }
         // URL 형식 참조: https://openweathermap.org/api/one-call-api
-        // Asia/Seoul - (lat: 37.5683 , lon: 126.9778)
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(location.lat)&lon=\(location.lon)&exclude=\(excludeString)&appid=\(Storage.API_KEY)")
-        else {
-            debugPrint(#function)
-            return nil
-        }
-        let (data, response) = try await URLSession.shared.data(from: url) // url 요청이 실패하면 throw
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(location.lat)&lon=\(location.lon)&exclude=\(excludeString)&appid=\(Storage.API_KEY)") else { return nil }
+        let (data, response) = try await URLSession.shared.data(from: url)
         let successRange = 200..<300
-        guard successRange.contains((response as? HTTPURLResponse)?.statusCode ?? 0) else {
-            debugPrint(#function)
-            return nil
-        }
-        return try JSONDecoder().decode(WeatherInfo.self, from: data) // decode 실패하면 throw
+        guard successRange.contains((response as? HTTPURLResponse)?.statusCode ?? 0) else { return nil }
+        return try JSONDecoder().decode(WeatherInfo.self, from: data)
     }
 }
 
