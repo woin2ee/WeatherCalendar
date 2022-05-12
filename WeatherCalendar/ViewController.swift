@@ -56,6 +56,7 @@ class ViewController: UIViewController {
     }
     
     private func initWeatherSV() {
+        let subViewCount = 10
         Task {
             guard let hourlyInfo = try? await WeatherInfo.of(Location.Asia.Seoul, .hourly)?.hourly else {
                 debugPrint("날씨 정보를 불러오지 못했습니다.")
@@ -64,8 +65,9 @@ class ViewController: UIViewController {
             for subView in weatherSV.arrangedSubviews {
                 weatherSV.removeArrangedSubview(subView)
             }
-            for i in 0..<10 {
-                let subView = WeatherSVSubView().of(dt: Double(hourlyInfo[i].dt), temp: hourlyInfo[i].temp)
+            let startIndex = hourlyInfo.startIndex
+            for i in startIndex..<startIndex + subViewCount {
+                let subView = WeatherSVSubView().of(dt: Double(hourlyInfo[i].dt), temp: hourlyInfo[i].temp, iconId: hourlyInfo[i].weather[0].icon)
                 weatherSV.addArrangedSubview(subView)
                 subView.snp.makeConstraints {
                     $0.width.equalTo(60)

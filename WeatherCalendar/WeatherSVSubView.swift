@@ -22,6 +22,7 @@ class WeatherSVSubView: UIView {
     }()
     var weatherIcon: UIImageView = {
         let icon = UIImageView()
+        icon.contentMode = .scaleAspectFit
         return icon
     }()
     var temperatureLabel: UILabel = {
@@ -29,6 +30,14 @@ class WeatherSVSubView: UIView {
         lbl.textAlignment = .center
         return lbl
     }()
+    
+    class WeatherIcon: UIImage {
+        static func from(id: String) throws -> UIImage? {
+            let url = URL(string: "http://openweathermap.org/img/wn/\(id)@2x.png")
+            let data = try Data(contentsOf: url!)
+            return UIImage(data: data)
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,13 +47,13 @@ class WeatherSVSubView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func of(dt: Double, temp kelvin: Double) -> UIView {
+    func of(dt: Double, temp kelvin: Double, iconId: String) -> UIView {
         let now = Date(timeIntervalSince1970: dt)
-        // 이미지 파싱 추가
+        let icon = try? WeatherIcon.from(id: iconId)
         let celsius = kelvin - 273.16
         
         hourLabel.text = formatter.string(from: now)
-        weatherIcon.image = UIImage(systemName: "sun.min.fill")
+        weatherIcon.image = icon
         temperatureLabel.text = "\(Int(celsius))°"
         
         let subView: UIView = {
