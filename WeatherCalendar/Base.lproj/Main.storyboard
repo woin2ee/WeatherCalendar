@@ -8,70 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Title-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherCalendar" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ge1-7I-Lzj" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="173" width="414" height="450"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="450" id="BcR-po-UXp"/>
-                                </constraints>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Db9-JT-gtI">
-                                <rect key="frame" x="0.0" y="628" width="414" height="234"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fz6-p5-hdc">
-                                <rect key="frame" x="0.0" y="88" width="414" height="80"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="dXp-ZU-EFY">
-                                        <rect key="frame" x="0.0" y="0.0" width="177" height="80"/>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="45V-OP-xrm"/>
-                                    <constraint firstItem="FHi-9V-sYu" firstAttribute="top" secondItem="dXp-ZU-EFY" secondAttribute="top" id="U5G-hZ-UKb"/>
-                                    <constraint firstItem="dXp-ZU-EFY" firstAttribute="height" secondItem="V74-3p-4C0" secondAttribute="height" id="UCU-Ef-8Ey"/>
-                                    <constraint firstItem="FHi-9V-sYu" firstAttribute="leading" secondItem="dXp-ZU-EFY" secondAttribute="leading" id="UJn-76-FFh"/>
-                                    <constraint firstItem="dXp-ZU-EFY" firstAttribute="trailing" secondItem="FHi-9V-sYu" secondAttribute="trailing" id="VHN-YQ-GG5"/>
-                                    <constraint firstItem="dXp-ZU-EFY" firstAttribute="bottom" secondItem="FHi-9V-sYu" secondAttribute="bottom" id="wMD-dj-RsR"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="FHi-9V-sYu"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="V74-3p-4C0"/>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Fz6-p5-hdc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0l1-kI-z1m"/>
-                            <constraint firstItem="Ge1-7I-Lzj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7bc-0X-Ct2"/>
-                            <constraint firstItem="Db9-JT-gtI" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="80f-I6-T7v"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Fz6-p5-hdc" secondAttribute="trailing" id="BKL-mG-5oQ"/>
-                            <constraint firstItem="Db9-JT-gtI" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="VWW-gJ-51Y"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ge1-7I-Lzj" secondAttribute="trailing" id="W53-vG-Nd1"/>
-                            <constraint firstItem="Db9-JT-gtI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YXe-xf-Vcl"/>
-                            <constraint firstItem="Ge1-7I-Lzj" firstAttribute="top" secondItem="Fz6-p5-hdc" secondAttribute="bottom" constant="5" id="tnG-9u-6kJ"/>
-                            <constraint firstItem="Db9-JT-gtI" firstAttribute="top" secondItem="Ge1-7I-Lzj" secondAttribute="bottom" constant="5" id="yWr-cE-Rb8"/>
-                            <constraint firstItem="Fz6-p5-hdc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zyR-Pf-0cc"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Title" id="uCA-zm-sKQ"/>
-                    <connections>
-                        <outlet property="calendar" destination="Ge1-7I-Lzj" id="Wm0-Tm-Ssq"/>
-                        <outlet property="todoTable" destination="Db9-JT-gtI" id="I9W-if-6O4"/>
-                        <outlet property="weatherSV" destination="dXp-ZU-EFY" id="Szl-Ed-AIz"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="842.02898550724649" y="82.366071428571431"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="eyz-G4-JpX">
             <objects>
@@ -90,8 +26,128 @@
             </objects>
             <point key="canvasLocation" x="-68.115942028985515" y="82.366071428571431"/>
         </scene>
+        <!--Title-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ge1-7I-Lzj" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="173" width="414" height="400"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="BcR-po-UXp"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fz6-p5-hdc">
+                                <rect key="frame" x="0.0" y="88" width="414" height="80"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="dXp-ZU-EFY">
+                                        <rect key="frame" x="0.0" y="0.0" width="177" height="80"/>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="45V-OP-xrm"/>
+                                    <constraint firstItem="FHi-9V-sYu" firstAttribute="top" secondItem="dXp-ZU-EFY" secondAttribute="top" id="U5G-hZ-UKb"/>
+                                    <constraint firstItem="dXp-ZU-EFY" firstAttribute="height" secondItem="V74-3p-4C0" secondAttribute="height" id="UCU-Ef-8Ey"/>
+                                    <constraint firstItem="FHi-9V-sYu" firstAttribute="leading" secondItem="dXp-ZU-EFY" secondAttribute="leading" id="UJn-76-FFh"/>
+                                    <constraint firstItem="dXp-ZU-EFY" firstAttribute="trailing" secondItem="FHi-9V-sYu" secondAttribute="trailing" id="VHN-YQ-GG5"/>
+                                    <constraint firstItem="dXp-ZU-EFY" firstAttribute="bottom" secondItem="FHi-9V-sYu" secondAttribute="bottom" id="wMD-dj-RsR"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="FHi-9V-sYu"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="V74-3p-4C0"/>
+                            </scrollView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IA4-G3-Z9l">
+                                <rect key="frame" x="0.0" y="578" width="414" height="284"/>
+                                <connections>
+                                    <segue destination="Mk8-U6-hY6" kind="embed" id="b61-Ct-Hx6"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Fz6-p5-hdc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0l1-kI-z1m"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IA4-G3-Z9l" secondAttribute="trailing" id="6qf-In-HYS"/>
+                            <constraint firstItem="Ge1-7I-Lzj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7bc-0X-Ct2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IA4-G3-Z9l" secondAttribute="bottom" id="A9I-C2-Cnb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Fz6-p5-hdc" secondAttribute="trailing" id="BKL-mG-5oQ"/>
+                            <constraint firstItem="IA4-G3-Z9l" firstAttribute="top" secondItem="Ge1-7I-Lzj" secondAttribute="bottom" constant="5" id="M3X-xE-R2h"/>
+                            <constraint firstItem="IA4-G3-Z9l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="QCR-q5-0aX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ge1-7I-Lzj" secondAttribute="trailing" id="W53-vG-Nd1"/>
+                            <constraint firstItem="Ge1-7I-Lzj" firstAttribute="top" secondItem="Fz6-p5-hdc" secondAttribute="bottom" constant="5" id="tnG-9u-6kJ"/>
+                            <constraint firstItem="Fz6-p5-hdc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zyR-Pf-0cc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="uCA-zm-sKQ"/>
+                    <connections>
+                        <outlet property="calendar" destination="Ge1-7I-Lzj" id="Wm0-Tm-Ssq"/>
+                        <outlet property="hourlyWeatherView" destination="dXp-ZU-EFY" id="Szl-Ed-AIz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="842.02898550724649" y="82.366071428571431"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5Ne-2V-vuQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mk8-U6-hY6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pcX-8s-oai">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UpY-aQ-fgT" kind="relationship" relationship="rootViewController" id="h8l-MG-efr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WvA-pF-yjF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="842.02898550724649" y="587.94642857142856"/>
+        </scene>
+        <!--Todo List-->
+        <scene sceneID="beU-Kh-RbW">
+            <objects>
+                <viewController id="UpY-aQ-fgT" customClass="TodoTableViewController" customModule="WeatherCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W4w-i2-wbE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="284"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Db9-JT-gtI">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="284"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Db9-JT-gtI" firstAttribute="leading" secondItem="W4w-i2-wbE" secondAttribute="leading" id="5jr-mI-fm8"/>
+                            <constraint firstItem="Db9-JT-gtI" firstAttribute="top" secondItem="W4w-i2-wbE" secondAttribute="top" id="I4H-8H-rbK"/>
+                            <constraint firstAttribute="trailing" secondItem="Db9-JT-gtI" secondAttribute="trailing" id="PuK-ke-fvS"/>
+                            <constraint firstAttribute="bottom" secondItem="Db9-JT-gtI" secondAttribute="bottom" id="wzd-BE-4cp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Todo List" id="dtM-Ip-SSL">
+                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" catalog="system" id="xNn-oG-LbH">
+                            <connections>
+                                <action selector="AddTodoItem:" destination="UpY-aQ-fgT" id="VhV-e1-ehn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="todoTable" destination="Db9-JT-gtI" id="vLU-5q-qVM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0d0-Om-4Sf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1749.2753623188407" y="587.94642857142856"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
