@@ -122,6 +122,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="1eD-ax-aIV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Db9-JT-gtI" firstAttribute="leading" secondItem="W4w-i2-wbE" secondAttribute="leading" id="5jr-mI-fm8"/>

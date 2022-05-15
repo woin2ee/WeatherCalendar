@@ -9,46 +9,34 @@ import UIKit
 import SnapKit
 
 class HourlyWeatherSubView {
-    static let formatter: DateFormatter = {
-        let df = CustomDateFormatter.kr()
-        df.dateFormat = "HH:mm"
-        return df
-    }()
-    
-    // 날씨 표시가 오래걸리는 이유? - Assets에 파일로 넣는것 고려
-    class WeatherIcon {
-        static func from(id: String) throws -> UIImage? {
-            let url = URL(string: "http://openweathermap.org/img/wn/\(id)@2x.png")
-            let data = try Data(contentsOf: url!)
-            return UIImage(data: data)
-        }
-    }
-
     static func of(dt: Double, temp kelvin: Double, iconId: String) -> UIView {
+        let formatter: DateFormatter = {
+            let df = CustomDateFormatter.kr()
+            df.dateFormat = "HH:mm"
+            return df
+        }()
+        
         let hourLabel: UILabel = {
             let lbl = UILabel()
             lbl.textAlignment = .center
+            let now = Date(timeIntervalSince1970: dt)
+            lbl.text = formatter.string(from: now)
             return lbl
         }()
         let weatherIcon: UIImageView = {
             let icon = UIImageView()
             icon.contentMode = .scaleAspectFit
+            let img = UIImage(named: iconId)
+            icon.image = img
             return icon
         }()
         let temperatureLabel: UILabel = {
             let lbl = UILabel()
             lbl.textAlignment = .center
+            let celsius = kelvin - 273.16
+            lbl.text = "\(Int(celsius))°"
             return lbl
         }()
-        
-        let now = Date(timeIntervalSince1970: dt)
-        let icon = try? WeatherIcon.from(id: iconId)
-        let celsius = kelvin - 273.16
-        
-        hourLabel.text = formatter.string(from: now)
-        weatherIcon.image = icon
-        temperatureLabel.text = "\(Int(celsius))°"
-        
         let view: UIView = {
             let view = UIView()
             view.addSubview(hourLabel)
