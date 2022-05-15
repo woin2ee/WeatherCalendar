@@ -7,6 +7,7 @@ target 'WeatherCalendar' do
 
   # FSCalendar
   pod 'FSCalendar'
+	pod 'SnapKit'
 
   # Pods for WeatherCalendar
 
