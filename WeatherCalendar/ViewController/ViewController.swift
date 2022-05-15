@@ -11,29 +11,24 @@ import SnapKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
-    @IBOutlet weak var todoTable: UITableView!
-    @IBOutlet weak var weatherSV: UIStackView!
-    
-    var todoItem = ["One", "Two"]
+    @IBOutlet weak var hourlyWeatherView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        setDataSourceAndDelegate()
+        calendar.dataSource = self
+        calendar.delegate = self
+        
         initAppearance(with: calendar.appearance)
-        initWeatherSV()
+        initHourlyWeatherView()
         
         // weekday 한/영 설정
         calendar.locale = Locale(identifier: "ko_KR")
 //        calendar.locale = Locale(identifier: "en_EN")
         
-    }
-    
-    private func setDataSourceAndDelegate() {
-        calendar.dataSource = self
-        calendar.delegate = self
-        todoTable.dataSource = self
-        todoTable.delegate = self
+        
+        
+        
     }
     
     private func initAppearance(with ca: FSCalendarAppearance) {
@@ -55,20 +50,19 @@ class ViewController: UIViewController {
         ca.borderRadius = 0
     }
     
-    private func initWeatherSV() {
+    private func initHourlyWeatherView() {
         let subViewCount = 10
         Task {
             guard let hourlyInfo = try? await WeatherInfo.of(Location.Asia.Seoul, .hourly)?.hourly else {
-                debugPrint("날씨 정보를 불러오지 못했습니다.")
                 return
             }
-            for subView in weatherSV.arrangedSubviews {
-                weatherSV.removeArrangedSubview(subView)
+            for view in hourlyWeatherView.arrangedSubviews {
+                hourlyWeatherView.removeArrangedSubview(view)
             }
             let startIndex = hourlyInfo.startIndex
             for i in startIndex..<startIndex + subViewCount {
-                let subView = WeatherSVSubView.of(dt: Double(hourlyInfo[i].dt), temp: hourlyInfo[i].temp, iconId: hourlyInfo[i].weather[0].icon)
-                weatherSV.addArrangedSubview(subView)
+                let subView = HourlyWeatherSubView.of(dt: Double(hourlyInfo[i].dt), temp: hourlyInfo[i].temp, iconId: hourlyInfo[i].weather[0].icon)
+                hourlyWeatherView.addArrangedSubview(subView)
                 subView.snp.makeConstraints {
                     $0.width.equalTo(60)
                 }
@@ -80,32 +74,9 @@ class ViewController: UIViewController {
 // FSCalender extension
 extension ViewController: FSCalendarDataSource, FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let date = CustomDateFormatter.forTodo().string(from: date)
-        
-        // 키값 확인용 함수
-        debugPrint(date)
-        
-        // todoItem 교체 부분
-        todoItem = Todo.getItem(as: date)
-        
-        todoTable.reloadData() // sectionUpate 함수로 교체
-    }
-}
-
-// TableView extension
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoItem.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "myCell")
-        
-        var config = cell.defaultContentConfiguration()
-        config.text = todoItem[indexPath.row]
-        
-        cell.contentConfiguration = config
-        
-        return cell
+        guard let todoTableVC = children.first?.children.first as? TodoTableViewController else {
+            return
+        }
+        todoTableVC.setTodoItem(accordingTo: date)
     }
 }

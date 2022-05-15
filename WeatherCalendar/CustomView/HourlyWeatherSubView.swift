@@ -1,5 +1,5 @@
 //
-//  WeatherSVSubView.swift
+//  HourlyWeatherSubView.swift
 //  WeatherCalendar
 //
 //  Created by Jaewon on 2022/05/12.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class WeatherSVSubView: UIView {
+class HourlyWeatherSubView {
     static let formatter: DateFormatter = {
         let df = CustomDateFormatter.kr()
         df.dateFormat = "HH:mm"
@@ -16,7 +16,7 @@ class WeatherSVSubView: UIView {
     }()
     
     // 날씨 표시가 오래걸리는 이유? - Assets에 파일로 넣는것 고려
-    class WeatherIcon: UIImage {
+    class WeatherIcon {
         static func from(id: String) throws -> UIImage? {
             let url = URL(string: "http://openweathermap.org/img/wn/\(id)@2x.png")
             let data = try Data(contentsOf: url!)
