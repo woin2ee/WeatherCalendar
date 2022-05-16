@@ -11,9 +11,10 @@
 		E848244E282E216400A180E3 /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848244D282E216400A180E3 /* TodoTableViewController.swift */; };
 		E8482452282E442B00A180E3 /* Todo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8482450282E442B00A180E3 /* Todo.xcdatamodeld */; };
 		E86E1761282984C400D327B7 /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E1760282984C400D327B7 /* WeatherInfo.swift */; };
+		E8981EA128328C510000E5F0 /* AddTodoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8981EA028328C510000E5F0 /* AddTodoItemViewController.swift */; };
 		E89E85CF28042BD100DDAB0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E85CE28042BD100DDAB0C /* AppDelegate.swift */; };
 		E89E85D128042BD100DDAB0C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E85D028042BD100DDAB0C /* SceneDelegate.swift */; };
-		E89E85D328042BD100DDAB0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E85D228042BD100DDAB0C /* ViewController.swift */; };
+		E89E85D328042BD100DDAB0C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E85D228042BD100DDAB0C /* MainViewController.swift */; };
 		E89E85D628042BD100DDAB0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89E85D428042BD100DDAB0C /* Main.storyboard */; };
 		E89E85D828042BD200DDAB0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E89E85D728042BD200DDAB0C /* Assets.xcassets */; };
 		E89E85DB28042BD300DDAB0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89E85D928042BD300DDAB0C /* LaunchScreen.storyboard */; };
@@ -30,10 +31,11 @@
 		E848244D282E216400A180E3 /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
 		E8482451282E442B00A180E3 /* Todo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Todo.xcdatamodel; sourceTree = "<group>"; };
 		E86E1760282984C400D327B7 /* WeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
+		E8981EA028328C510000E5F0 /* AddTodoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoItemViewController.swift; sourceTree = "<group>"; };
 		E89E85CB28042BD100DDAB0C /* WeatherCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89E85CE28042BD100DDAB0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E89E85D028042BD100DDAB0C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E89E85D228042BD100DDAB0C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E89E85D228042BD100DDAB0C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E89E85D528042BD100DDAB0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E89E85D728042BD200DDAB0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E89E85DA28042BD300DDAB0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -86,8 +88,9 @@
 		E848244F282E2A5300A180E3 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E89E85D228042BD100DDAB0C /* ViewController.swift */,
+				E89E85D228042BD100DDAB0C /* MainViewController.swift */,
 				E848244D282E216400A180E3 /* TodoTableViewController.swift */,
+				E8981EA028328C510000E5F0 /* AddTodoItemViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -262,7 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E89E85D328042BD100DDAB0C /* ViewController.swift in Sources */,
+				E89E85D328042BD100DDAB0C /* MainViewController.swift in Sources */,
 				E848244E282E216400A180E3 /* TodoTableViewController.swift in Sources */,
 				E8DB2840282CC23200D98141 /* Todo.swift in Sources */,
 				E8FEDA52282C0EA90051E8B0 /* Location.swift in Sources */,
@@ -273,6 +276,7 @@
 				E89E85D128042BD100DDAB0C /* SceneDelegate.swift in Sources */,
 				E86E1761282984C400D327B7 /* WeatherInfo.swift in Sources */,
 				E8DD19A6282BFD8D00D5FC78 /* Storage.swift in Sources */,
+				E8981EA128328C510000E5F0 /* AddTodoItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

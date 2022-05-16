@@ -17,6 +17,8 @@ class TodoTableViewController: UIViewController {
         // Do any additional setup after loading the view.
         todoTable.dataSource = self
         todoTable.delegate = self
+        
+        self.setTodoList(accordingTo: Date())
     }
     
     func setTodoList(accordingTo date: Date) {
@@ -24,22 +26,10 @@ class TodoTableViewController: UIViewController {
         todoList = Todo().fetchList(by: date)
         todoTable.reloadSections(IndexSet(0...0), with: .none)
     }
-    
-    @IBAction func AddTodoItem(_ sender: UIBarButtonItem) {
-        let todo = Todo()
-        
-        // save 테스트
-        let item = todo.createItem(date: "2022. 5. 11.", content: "TestItem 11일")
-        todo.save(item: item)
-
-        print("Success Add Todo Item!")
-        
-        // fetch 테스트
-        todo.showAllTodoList()
-        
-    }
 }
 
+
+// MARK: - DataSource & Delegate
 extension TodoTableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoList.count

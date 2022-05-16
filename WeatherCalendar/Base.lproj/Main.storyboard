@@ -29,7 +29,7 @@
         <!--Title-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="WeatherCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,7 +62,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IA4-G3-Z9l">
                                 <rect key="frame" x="0.0" y="578" width="414" height="284"/>
                                 <connections>
-                                    <segue destination="Mk8-U6-hY6" kind="embed" id="b61-Ct-Hx6"/>
+                                    <segue destination="UpY-aQ-fgT" kind="embed" id="9N8-Xh-GBX"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -81,7 +81,13 @@
                             <constraint firstItem="Fz6-p5-hdc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zyR-Pf-0cc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="uCA-zm-sKQ"/>
+                    <navigationItem key="navigationItem" title="Title" id="uCA-zm-sKQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iH3-Gb-WO0">
+                            <connections>
+                                <segue destination="Iip-oi-EAF" kind="presentation" id="gEZ-aw-rij"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="calendar" destination="Ge1-7I-Lzj" id="Wm0-Tm-Ssq"/>
                         <outlet property="hourlyWeatherView" destination="dXp-ZU-EFY" id="Szl-Ed-AIz"/>
@@ -91,23 +97,54 @@
             </objects>
             <point key="canvasLocation" x="842.02898550724649" y="82.366071428571431"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="5Ne-2V-vuQ">
+        <!--새 할일-->
+        <scene sceneID="hdX-0G-n0D">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mk8-U6-hY6" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pcX-8s-oai">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController id="58S-H9-vSs" customClass="AddTodoItemViewController" customModule="WeatherCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s0W-jR-U54">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="할일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zya-bp-Zpi">
+                                <rect key="frame" x="40" y="106" width="334" height="39.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Wz2-wD-W4I">
+                                <rect key="frame" x="0.0" y="196" width="414" height="216"/>
+                            </datePicker>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Adk-na-GKG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Adk-na-GKG" firstAttribute="trailing" secondItem="Zya-bp-Zpi" secondAttribute="trailing" constant="40" id="1wB-r1-yoW"/>
+                            <constraint firstItem="Zya-bp-Zpi" firstAttribute="top" secondItem="Adk-na-GKG" secondAttribute="top" constant="50" id="4tb-ij-q04"/>
+                            <constraint firstItem="Wz2-wD-W4I" firstAttribute="leading" secondItem="Adk-na-GKG" secondAttribute="leading" id="KCd-sw-WaE"/>
+                            <constraint firstItem="Wz2-wD-W4I" firstAttribute="trailing" secondItem="Adk-na-GKG" secondAttribute="trailing" id="Tag-Ik-B4E"/>
+                            <constraint firstItem="Zya-bp-Zpi" firstAttribute="leading" secondItem="Adk-na-GKG" secondAttribute="leading" constant="40" id="jam-bS-Q8R"/>
+                            <constraint firstItem="Wz2-wD-W4I" firstAttribute="top" secondItem="Zya-bp-Zpi" secondAttribute="bottom" constant="50" id="yfd-wx-IYA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="새 할일" id="O76-4E-QuV">
+                        <barButtonItem key="leftBarButtonItem" title="취소" id="Q5p-K4-v21">
+                            <connections>
+                                <action selector="dismissModal:" destination="58S-H9-vSs" id="Jv3-Wz-clP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="추가" id="dhE-Rv-ixF">
+                            <connections>
+                                <action selector="addTodoItem:" destination="58S-H9-vSs" id="eQz-MJ-Pmp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <segue destination="UpY-aQ-fgT" kind="relationship" relationship="rootViewController" id="h8l-MG-efr"/>
+                        <outlet property="content" destination="Zya-bp-Zpi" id="ZD2-EI-MB3"/>
+                        <outlet property="datePicker" destination="Wz2-wD-W4I" id="c8b-WJ-Ctm"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WvA-pF-yjF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DOF-y9-8Qs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="842.02898550724649" y="587.94642857142856"/>
+            <point key="canvasLocation" x="2581.1594202898555" y="81.696428571428569"/>
         </scene>
         <!--Todo List-->
         <scene sceneID="beU-Kh-RbW">
@@ -119,7 +156,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Db9-JT-gtI">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="284"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1eD-ax-aIV"/>
@@ -132,11 +169,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Todo List" id="dtM-Ip-SSL">
-                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" catalog="system" id="xNn-oG-LbH">
-                            <connections>
-                                <action selector="AddTodoItem:" destination="UpY-aQ-fgT" id="VhV-e1-ehn"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" catalog="system" id="xNn-oG-LbH"/>
                     </navigationItem>
                     <connections>
                         <outlet property="todoTable" destination="Db9-JT-gtI" id="vLU-5q-qVM"/>
@@ -144,13 +177,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0d0-Om-4Sf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1749.2753623188407" y="587.94642857142856"/>
+            <point key="canvasLocation" x="843" y="625"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="c56-QE-19e">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Iip-oi-EAF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="efk-bY-I75">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="58S-H9-vSs" kind="relationship" relationship="rootViewController" id="Zps-Yz-Cu3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jr0-cD-jeG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1671.0144927536232" y="81.696428571428569"/>
         </scene>
     </scenes>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
