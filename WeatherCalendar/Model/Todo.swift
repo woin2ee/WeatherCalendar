@@ -13,7 +13,7 @@ class Todo {
         var date: String
         var content: String
     }
-//    var list: Dictionary<String, [String]> // cache 역할 개발 예정 not null
+//    var lists: Dictionary<String, [String]> // cache 역할 개발 예정 not null
     
     func createItem(date: String, content: String) -> TodoItem {
         return TodoItem(date: date, content: content)

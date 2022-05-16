@@ -10,7 +10,7 @@ import UIKit
 class TodoTableViewController: UIViewController {
     @IBOutlet weak var todoTable: UITableView!
     
-    private var todoItem = [String]()
+    private var todoList = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,9 +19,9 @@ class TodoTableViewController: UIViewController {
         todoTable.delegate = self
     }
     
-    func setTodoItem(accordingTo date: Date) {
+    func setTodoList(accordingTo date: Date) {
         let date = CustomDateFormatter.forTodo().string(from: date)
-        todoItem = Todo().fetchList(by: date)
+        todoList = Todo().fetchList(by: date)
         todoTable.reloadSections(IndexSet(0...0), with: .none)
     }
     
@@ -42,14 +42,14 @@ class TodoTableViewController: UIViewController {
 
 extension TodoTableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoItem.count
+        return todoList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "myCell")
 
         var config = cell.defaultContentConfiguration()
-        config.text = todoItem[indexPath.row]
+        config.text = todoList[indexPath.row]
 
         cell.contentConfiguration = config
 

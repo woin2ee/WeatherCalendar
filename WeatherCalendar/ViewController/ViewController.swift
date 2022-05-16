@@ -77,6 +77,6 @@ extension ViewController: FSCalendarDataSource, FSCalendarDelegate {
         guard let todoTableVC = children.first?.children.first as? TodoTableViewController else {
             return
         }
-        todoTableVC.setTodoItem(accordingTo: date)
+        todoTableVC.setTodoList(accordingTo: date)
     }
 }
