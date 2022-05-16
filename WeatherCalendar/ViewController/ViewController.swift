@@ -34,12 +34,16 @@ class ViewController: UIViewController {
     private func initAppearance(with ca: FSCalendarAppearance) {
         ca.headerTitleColor = .red
         ca.weekdayTextColor = .red
+        // 캘린더 배경색
+        calendar.backgroundColor = UIColor(red:241/255, green: 240/255, blue: 255/255, alpha: 1)
         
         ca.eventSelectionColor = .green
         ca.eventDefaultColor = .yellow
         
-        ca.selectionColor = .brown
-        ca.todayColor = .blue
+        // 선택한 날짜 색
+        ca.selectionColor = UIColor(red: 100/255, green: 60/255, blue: 253/255, alpha: 0.5)
+        // 오늘 날짜 색
+        ca.todayColor = UIColor(red: 100/255, green: 60/255, blue: 230/255, alpha: 1)
         
         ca.todaySelectionColor = .red
         
