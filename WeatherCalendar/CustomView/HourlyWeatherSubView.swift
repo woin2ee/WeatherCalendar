@@ -53,7 +53,7 @@ class HourlyWeatherSubView {
     private static func setConstraints(of views: [UIView]) {
         views[0].snp.makeConstraints {
             $0.leading.trailing.top.equalToSuperview()
-            $0.height.equalTo(15)
+            $0.height.equalTo(12)
         }
         views[1].snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()

@@ -40,11 +40,11 @@ class MainViewController: UIViewController {
         
         ca.todaySelectionColor = .red
         
-        ca.headerDateFormat = "M월"
+        ca.headerDateFormat = ""
         
         ca.headerMinimumDissolvedAlpha = 0.0
         
-        ca.borderRadius = 0
+//        ca.borderRadius = 0
     }
     
     private func initHourlyWeatherView() {
