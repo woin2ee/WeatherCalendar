@@ -13,44 +13,30 @@ class Todo {
         var date: String
         var content: String
     }
-//    var lists: Dictionary<String, [String]> // cache 역할 개발 예정 not null
     
     func createItem(date: String, content: String) -> TodoItem {
         return TodoItem(date: date, content: content)
     }
     
-    func save(item: Todo.TodoItem) {
+    func save(item: Todo.TodoItem) throws {
         let context = persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "TodoList", in: context)
         
-        var fetchResult: [NSManagedObject]
-        do {
-            fetchResult = try context.fetch(getFetchRequestFiltered(by: item.date))
-        } catch {
-            fetchResult = []
-            print(error.localizedDescription)
-        }
-        
+        let fetchResult = try context.fetch(getFetchRequestFiltered(by: item.date))
         if fetchResult.isEmpty { // date키 값이 없을때 = Create
-            if let entity = entity {
-                let list = [item.content]
-                let managedObj = NSManagedObject(entity: entity, insertInto: context)
-                managedObj.setValue(item.date, forKey: "date")
-                managedObj.setValue(list, forKey: "list")
-            }
+            guard let entity = entity else { return }
+            let list = [item.content]
+            let managedObj = NSManagedObject(entity: entity, insertInto: context)
+            managedObj.setValue(item.date, forKey: "date")
+            managedObj.setValue(list, forKey: "list")
         } else { // date키 값이 있을때 = Update
-            var newList = fetchResult.first?.value(forKey: "list") as! [String]
-            newList.append(item.content)
-            
+            let list = fetchResult.first?.value(forKey: "list") as! [String]
+            let newList = list + [item.content]
             let managedObj = fetchResult.first
             managedObj?.setValue(newList, forKey: "list")
         }
         
-        do {
-            try context.save()
-        } catch {
-            print(error.localizedDescription)
-        }
+        try context.save()
     }
     
     func fetchList(by date: String) -> [String] {
@@ -59,19 +45,35 @@ class Todo {
         return fetchResult?.first?.value(forKey: "list") as? [String] ?? []
     }
     
+    func fetchAllExistentDate() -> [String] {
+        var dates = [String]()
+        fetchAllTodoListAndExecuteEach {
+            dates.append($0.value(forKey: "date") as? String ?? "")
+        }
+        return dates
+    }
+    
+    func showAllTodoList() {
+        fetchAllTodoListAndExecuteEach {
+            print("\($0.value(forKey: "date") as? String ?? "nil") : \($0.value(forKey: "list") as? [String] ?? ["nil"])")
+        }
+    }
+    
+    // MARK: - Private Method
+    
     private func getFetchRequestFiltered(by date: String) -> NSFetchRequest<NSManagedObject> {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "TodoList")
         fetchRequest.predicate = NSPredicate(format: "date = %@", date)
         return fetchRequest
     }
     
-    func showAllTodoList() {
+    private func fetchAllTodoListAndExecuteEach(procedure: (NSManagedObject) -> Void) {
         let context = persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "TodoList")
         do {
             let fetchResult = try context.fetch(fetchRequest)
             fetchResult.forEach {
-                print("\($0.value(forKey: "date") as? String ?? "nil") : \($0.value(forKey: "list") as? [String] ?? ["nil"])")
+                procedure($0)
             }
         } catch {
             print(error.localizedDescription)

@@ -28,12 +28,13 @@ class MainViewController: UIViewController {
     }
 
     // MARK: - Private Method
+    
     private func initAppearance(with ca: FSCalendarAppearance) {
         ca.headerTitleColor = .red
         ca.weekdayTextColor = .red
         
         ca.eventSelectionColor = .green
-        ca.eventDefaultColor = .yellow
+        ca.eventDefaultColor = .magenta
         
         ca.selectionColor = .brown
         ca.todayColor = .blue
@@ -69,6 +70,7 @@ class MainViewController: UIViewController {
 }
 
 // MARK: - Navigation
+
 extension MainViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard
@@ -80,7 +82,8 @@ extension MainViewController {
     }
 }
 
-// MARK: - DataSource & Delegate
+// MARK: - FSCalendar DataSource & Delegate
+
 extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         guard let todoTableVC = children.first as? TodoTableViewController else {
@@ -88,12 +91,24 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
         }
         todoTableVC.setTodoList(accordingTo: date)
     }
+    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        let dates = Todo().fetchAllExistentDate()
+        let formattedDate = CustomDateFormatter.forTodo().string(from: date)
+        return dates.contains(formattedDate) ? 1 : 0
+    }
 }
 
 // MARK: - Delegate로 Data 전달
+
 extension MainViewController: SendDateDelegate {
     func send(date: Date) {
-        self.calendar(self.calendar, didSelect: date, at: .current)
+        calendar.reloadData()
+        calendar(self.calendar, didSelect: date, at: .current)
+        scrollToBottom()
+    }
+    
+    private func scrollToBottom() {
         guard let todoTableVC = children.first as? TodoTableViewController else {
             return
         }

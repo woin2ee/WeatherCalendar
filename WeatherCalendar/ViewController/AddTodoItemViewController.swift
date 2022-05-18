@@ -41,7 +41,7 @@ class AddTodoItemViewController: UIViewController {
         let formattedDate = CustomDateFormatter.forTodo().string(from: datePicker.date)
         let todo = Todo()
         let item = todo.createItem(date: formattedDate, content: self.content.text ?? "")
-        todo.save(item: item)
+        try? todo.save(item: item)
         delegate?.send(date: datePicker.date)
         presentingViewController?.dismiss(animated: true)
     }
