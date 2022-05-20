@@ -9,16 +9,16 @@ import Foundation
 import CoreData
 
 class Todo {
-    struct TodoItem {
+    struct Item {
         var date: String
         var content: String
     }
     
-    func createItem(date: String, content: String) -> TodoItem {
-        return TodoItem(date: date, content: content)
+    func createItem(date: String, content: String) -> Item {
+        return Item(date: date, content: content)
     }
     
-    func save(item: Todo.TodoItem) throws {
+    func save(item: Todo.Item) throws {
         let context = persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "TodoList", in: context)
         
