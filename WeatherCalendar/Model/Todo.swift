@@ -8,44 +8,81 @@
 import Foundation
 import CoreData
 
-class Todo {
-    struct Item {
-        var date: String
-        var content: String
-    }
-    
-    func createItem(date: String, content: String) -> Item {
-        return Item(date: date, content: content)
-    }
-    
-    func save(item: Todo.Item) throws {
-        let context = persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "TodoList", in: context)
+struct Todo {
+    struct List {
+        let date: Date
+        let list: [String]
         
-        let fetchResult = try context.fetch(getFetchRequestFiltered(by: item.date))
-        if fetchResult.isEmpty { // date키 값이 없을때 = Create
-            guard let entity = entity else { return }
+        var count: Int {
+            return list.count
+        }
+        
+        subscript (index: Int) -> String {
+            return list[index]
+        }
+    }
+    
+    struct Item {
+        let date: String
+        let content: String
+        
+        static func create(date: String, content: String) -> Item {
+            return Item(date: date, content: content)
+        }
+    }
+    
+    // MARK: - Core Data stack
+    
+    private static var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Todo")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    private static let context = persistentContainer.viewContext
+    private static let entityName = "TodoList"
+    private static let todoListEntity = NSEntityDescription.entity(forEntityName: entityName, in: context)
+    
+    // MARK: - Core Data Persistent API
+    
+    static func save(item: Todo.Item) {
+        let fetchResult = getFetchResult(request: getFetchRequestFiltered(by: item.date))
+        
+        if fetchResult.isEmpty {
+            guard let entity = todoListEntity else { return }
             let list = [item.content]
             let managedObj = NSManagedObject(entity: entity, insertInto: context)
             managedObj.setValue(item.date, forKey: "date")
             managedObj.setValue(list, forKey: "list")
-        } else { // date키 값이 있을때 = Update
+        } else {
             let list = fetchResult.first?.value(forKey: "list") as! [String]
             let newList = list + [item.content]
             let managedObj = fetchResult.first
             managedObj?.setValue(newList, forKey: "list")
         }
         
-        try context.save()
+        self.saveContext()
     }
     
-    func fetchList(by date: String) -> [String] {
-        let context = persistentContainer.viewContext
-        let fetchResult = try? context.fetch(getFetchRequestFiltered(by: date))
-        return fetchResult?.first?.value(forKey: "list") as? [String] ?? []
+    static func fetchAll() -> [String:[String]] {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        let fetchResult = getFetchResult(request: fetchRequest)
+        var todo = [String:[String]]()
+        fetchResult.forEach {
+            todo[$0.value(forKey: "date") as? String ?? "nil"] = $0.value(forKey: "list") as? [String]
+        }
+        return todo
     }
     
-    func fetchAllExistentDate() -> [String] {
+    static func fetchList(by date: String) -> [String] {
+        let fetchResult = getFetchResult(request: getFetchRequestFiltered(by: date))
+        return fetchResult.first?.value(forKey: "list") as? [String] ?? []
+    }
+    
+    static func fetchAllExistentDate() -> [String] {
         var dates = [String]()
         fetchAllTodoListAndExecuteEach {
             dates.append($0.value(forKey: "date") as? String ?? "")
@@ -53,7 +90,18 @@ class Todo {
         return dates
     }
     
-    func showAllTodoList() {
+    static func delete(date: Date, content: String) {
+        let formattedDate = CustomDateFormatter.forTodo().string(from: date)
+        let fetchResult = getFetchResult(request: getFetchRequestFiltered(by: formattedDate))
+        var list = fetchResult.first?.value(forKey: "list") as? [String]
+        guard let index = list?.firstIndex(of: content) else { return }
+        list?.remove(at: index)
+        let managedObj = fetchResult.first
+        managedObj?.setValue(list, forKey: "list")
+        self.saveContext()
+    }
+    
+    static func showAllTodoList() {
         fetchAllTodoListAndExecuteEach {
             print("\($0.value(forKey: "date") as? String ?? "nil") : \($0.value(forKey: "list") as? [String] ?? ["nil"])")
         }
@@ -61,57 +109,36 @@ class Todo {
     
     // MARK: - Private Method
     
-    private func getFetchRequestFiltered(by date: String) -> NSFetchRequest<NSManagedObject> {
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "TodoList")
+    private static func getFetchResult(request: NSFetchRequest<NSManagedObject>) -> [NSManagedObject] {
+        do {
+            return try context.fetch(request)
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+    
+    private static func getFetchRequestFiltered(by date: String) -> NSFetchRequest<NSManagedObject> {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "date = %@", date)
         return fetchRequest
     }
     
-    private func fetchAllTodoListAndExecuteEach(procedure: (NSManagedObject) -> Void) {
-        let context = persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "TodoList")
-        do {
-            let fetchResult = try context.fetch(fetchRequest)
-            fetchResult.forEach {
-                procedure($0)
-            }
-        } catch {
-            print(error.localizedDescription)
+    private static func fetchAllTodoListAndExecuteEach(procedure: (NSManagedObject) -> Void) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        let fetchResult = getFetchResult(request: fetchRequest)
+        fetchResult.forEach {
+            procedure($0)
         }
     }
     
-    // MARK: - Core Data stack
-    
-    private lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Todo")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version. Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-    
     // MARK: - Core Data Saving support
     
-    func saveContext () {
-        let context = persistentContainer.viewContext
+    private static func saveContext () {
         if context.hasChanges {
             do {
                 try context.save()
-                
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }

@@ -18,6 +18,10 @@ class MainViewController: UIViewController {
         // Do any additional setup after loading the view.
         calendar.dataSource = self
         calendar.delegate = self
+        guard let todoTableVC = children.first as? TodoTableViewController else {
+            return
+        }
+        todoTableVC.delegate = self
         
         initAppearance(with: calendar.appearance)
         initHourlyWeatherView()
@@ -26,7 +30,16 @@ class MainViewController: UIViewController {
         calendar.locale = Locale(identifier: "ko_KR")
 //        calendar.locale = Locale(identifier: "en_EN")
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            let nc = segue.destination as? UINavigationController,
+            let addTodoItemVC = nc.topViewController as? AddTodoItemViewController
+        else { return }
+        addTodoItemVC.delegate = self
+        addTodoItemVC.selectedDate = calendar.selectedDate
+    }
+    
     // MARK: - Private Method
     
     private func initAppearance(with ca: FSCalendarAppearance) {
@@ -69,19 +82,6 @@ class MainViewController: UIViewController {
     }
 }
 
-// MARK: - Navigation
-
-extension MainViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard
-            let nc = segue.destination as? UINavigationController,
-            let addTodoItemVC = nc.topViewController as? AddTodoItemViewController
-        else { return }
-        addTodoItemVC.delegate = self
-        addTodoItemVC.selectedDate = calendar.selectedDate
-    }
-}
-
 // MARK: - FSCalendar DataSource & Delegate
 
 extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
@@ -93,9 +93,9 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let dates = Todo().fetchAllExistentDate()
+        let todo = Todo.fetchAll()
         let formattedDate = CustomDateFormatter.forTodo().string(from: date)
-        return dates.contains(formattedDate) ? 1 : 0
+        return todo[formattedDate]?.count ?? 0 > 0 ? 1 : 0
     }
 }
 
@@ -115,5 +115,12 @@ extension MainViewController: SendDateDelegate {
         let numOfRows = todoTableVC.todoTable.numberOfRows(inSection: 0)
         let indexPath = IndexPath(row: numOfRows - 1, section: 0)
         todoTableVC.todoTable.scrollToRow(at: indexPath, at: .bottom, animated: true)
+    }
+}
+
+// MARK: -
+extension MainViewController: ActionRequestDelegate {
+    func updateCalendar() {
+        calendar.reloadData()
     }
 }
