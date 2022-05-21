@@ -112,7 +112,7 @@
         <!--새 할일-->
         <scene sceneID="hdX-0G-n0D">
             <objects>
-                <viewController id="58S-H9-vSs" customClass="AddTodoItemViewController" customModule="WeatherCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddTodoItemViewController" id="58S-H9-vSs" customClass="AddTodoItemViewController" customModule="WeatherCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s0W-jR-U54">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
