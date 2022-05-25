@@ -64,15 +64,16 @@ class MainViewController: UIViewController {
     private func initHourlyWeatherView() {
         let subViewCount = 10
         Task {
-            guard let hourlyInfo = try? await WeatherInfo.of(Location.Asia.Seoul, .hourly)?.hourly else {
+            guard let weatherInfo = try? await WeatherInfo.of(Location.Asia.Seoul)?.hourly else {
                 return
             }
+            
             for view in hourlyWeatherView.arrangedSubviews {
                 hourlyWeatherView.removeArrangedSubview(view)
             }
-            let startIndex = hourlyInfo.startIndex
+            let startIndex = weatherInfo.startIndex
             for i in startIndex..<startIndex + subViewCount {
-                let subView = HourlyWeatherSubView.of(dt: Double(hourlyInfo[i].dt), temp: hourlyInfo[i].temp, iconId: hourlyInfo[i].weather[0].icon)
+                let subView = HourlyWeatherSubView.of(dt: Double(weatherInfo[i].dt), temp: weatherInfo[i].temp, iconId: weatherInfo[i].weather[0].icon)
                 hourlyWeatherView.addArrangedSubview(subView)
                 subView.snp.makeConstraints {
                     $0.width.equalTo(60)

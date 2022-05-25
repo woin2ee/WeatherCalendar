@@ -7,34 +7,18 @@
 
 import Foundation
 
-enum APIOptions {
-    case current, hourly, daily, all
-}
-
 struct WeatherInfo: Codable {
     let lat: Double
     let lon: Double
     let timezone: String
     let timezone_offset: Int
-    var current: Current? = nil
-    var hourly: [Hourly]? = nil
-    var daily: [Daily]? = nil
+    var current: Current
+    var hourly: [Hourly]
+    var daily: [Daily]
     
-    /// - Parameter options: [current: 현재 시각의 날씨 데이터, hourly: 현재 시각 기준 48시간의 예측 데이터, daily: 오늘 기준 7일 동안의 예측 데이터, all: 모두]
-    static func of(_ location: (lat: Double, lon: Double), _ option: APIOptions = .all) async throws -> WeatherInfo? {
-        let excludeString: String
-        switch option {
-        case .current:
-            excludeString = "minutely,alerts,hourly,daily"
-        case .hourly:
-            excludeString = "minutely,alerts,current,daily"
-        case .daily:
-            excludeString = "minutely,alerts,hourly,current"
-        case .all:
-            excludeString = "minutely,alerts"
-        }
+    static func of(_ location: (lat: Double, lon: Double)) async throws -> WeatherInfo? {
         // URL 형식 참조: https://openweathermap.org/api/one-call-api
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(location.lat)&lon=\(location.lon)&exclude=\(excludeString)&appid=\(Storage.API_KEY)") else { return nil }
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(location.lat)&lon=\(location.lon)&exclude=minutely,alerts&appid=\(Storage.API_KEY)") else { return nil }
         let (data, response) = try await URLSession.shared.data(from: url)
         let successRange = 200..<300
         guard successRange.contains((response as? HTTPURLResponse)?.statusCode ?? 0) else { return nil }
@@ -52,17 +36,6 @@ struct Hourly: Codable {
     let dt: Int
     let temp: Double
     let weather: [Weather]
-    
-    // Debug용 확인 함수
-    func printDataTime() {
-        let now = Date(timeIntervalSince1970: Double(dt))
-        let formatter: DateFormatter = {
-            let df = CustomDateFormatter.kr()
-            df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            return df
-        }()
-        print("now: \(formatter.string(from: now))")
-    }
 }
 
 struct Daily: Codable {
