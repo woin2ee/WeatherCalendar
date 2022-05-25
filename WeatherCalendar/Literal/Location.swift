@@ -8,8 +8,15 @@
 import Foundation
 
 enum Location {
-    struct Asia {
-        static let Seoul = (lat: 37.5683, lon: 126.9778)
+    typealias Coord = (lat: Double, lon: Double)
+    
+    case seoul
+    
+    var coordinates: Coord {
+        switch self {
+        case .seoul:
+            return (37.5683, 126.9778)
+        }
     }
     
 }

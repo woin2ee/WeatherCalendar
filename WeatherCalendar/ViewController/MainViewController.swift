@@ -64,7 +64,7 @@ class MainViewController: UIViewController {
     private func initHourlyWeatherView() {
         let subViewCount = 10
         Task {
-            guard let weatherInfo = try? await WeatherInfo.of(Location.Asia.Seoul)?.hourly else {
+            guard let weatherInfo = try? await WeatherData.of(location: Location.seoul.coordinates)?.hourly else {
                 return
             }
             

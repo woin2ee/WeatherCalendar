@@ -12,7 +12,7 @@
 		E8482452282E442B00A180E3 /* Todo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8482450282E442B00A180E3 /* Todo.xcdatamodeld */; };
 		E849A8EC283E6A00001BAA36 /* TodoDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E849A8EB283E6A00001BAA36 /* TodoDateFormatter.swift */; };
 		E849A8EE283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E849A8ED283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift */; };
-		E86E1761282984C400D327B7 /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E1760282984C400D327B7 /* WeatherInfo.swift */; };
+		E86E1761282984C400D327B7 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E1760282984C400D327B7 /* WeatherData.swift */; };
 		E8981EA128328C510000E5F0 /* AddTodoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8981EA028328C510000E5F0 /* AddTodoItemViewController.swift */; };
 		E89E85CF28042BD100DDAB0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E85CE28042BD100DDAB0C /* AppDelegate.swift */; };
 		E89E85D128042BD100DDAB0C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E85D028042BD100DDAB0C /* SceneDelegate.swift */; };
@@ -44,7 +44,7 @@
 		E8482451282E442B00A180E3 /* Todo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Todo.xcdatamodel; sourceTree = "<group>"; };
 		E849A8EB283E6A00001BAA36 /* TodoDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDateFormatter.swift; sourceTree = "<group>"; };
 		E849A8ED283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherDateFormatter.swift; sourceTree = "<group>"; };
-		E86E1760282984C400D327B7 /* WeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
+		E86E1760282984C400D327B7 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		E8981EA028328C510000E5F0 /* AddTodoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoItemViewController.swift; sourceTree = "<group>"; };
 		E89E85CB28042BD100DDAB0C /* WeatherCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89E85CE28042BD100DDAB0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +126,14 @@
 			path = CustomDateFormatter;
 			sourceTree = "<group>";
 		};
+		E849A8EF283E6E25001BAA36 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				E86E1760282984C400D327B7 /* WeatherData.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
 		E89E85C228042BD100DDAB0C = {
 			isa = PBXGroup;
 			children = (
@@ -184,7 +192,7 @@
 		E8DD19A4282BEF7C00D5FC78 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E86E1760282984C400D327B7 /* WeatherInfo.swift */,
+				E849A8EF283E6E25001BAA36 /* Weather */,
 				E8DB283F282CC23200D98141 /* Todo.swift */,
 				E8482450282E442B00A180E3 /* Todo.xcdatamodeld */,
 			);
@@ -346,7 +354,7 @@
 				E8482452282E442B00A180E3 /* Todo.xcdatamodeld in Sources */,
 				E89E85D128042BD100DDAB0C /* SceneDelegate.swift in Sources */,
 				E849A8EC283E6A00001BAA36 /* TodoDateFormatter.swift in Sources */,
-				E86E1761282984C400D327B7 /* WeatherInfo.swift in Sources */,
+				E86E1761282984C400D327B7 /* WeatherData.swift in Sources */,
 				E8DD19A6282BFD8D00D5FC78 /* Storage.swift in Sources */,
 				E8981EA128328C510000E5F0 /* AddTodoItemViewController.swift in Sources */,
 			);
