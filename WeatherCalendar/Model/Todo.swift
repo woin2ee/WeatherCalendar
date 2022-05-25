@@ -91,7 +91,7 @@ struct Todo {
     }
     
     static func delete(date: Date, content: String) {
-        let formattedDate = CustomDateFormatter.forTodo().string(from: date)
+        let formattedDate = TodoDateFormatter().string(from: date)
         let fetchResult = getFetchResult(request: getFetchRequestFiltered(by: formattedDate))
         var list = fetchResult.first?.value(forKey: "list") as? [String]
         guard let index = list?.firstIndex(of: content) else { return }

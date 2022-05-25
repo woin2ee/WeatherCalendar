@@ -10,17 +10,11 @@ import SnapKit
 
 class HourlyWeatherSubView {
     static func of(dt: Double, temp kelvin: Double, iconId: String) -> UIView {
-        let formatter: DateFormatter = {
-            let df = CustomDateFormatter.kr()
-            df.dateFormat = "HH:mm"
-            return df
-        }()
-        
         let hourLabel: UILabel = {
             let lbl = UILabel()
             lbl.textAlignment = .center
             let now = Date(timeIntervalSince1970: dt)
-            lbl.text = formatter.string(from: now)
+            lbl.text = HourlyWeatherDateFormatter().string(from: now)
             return lbl
         }()
         let weatherIcon: UIImageView = {

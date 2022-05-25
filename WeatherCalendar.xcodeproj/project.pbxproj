@@ -10,6 +10,8 @@
 		78BB208475E68E58E8175D95 /* Pods_WeatherCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB4F553F0F66D2FDFC99A569 /* Pods_WeatherCalendar.framework */; };
 		E848244E282E216400A180E3 /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848244D282E216400A180E3 /* TodoTableViewController.swift */; };
 		E8482452282E442B00A180E3 /* Todo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8482450282E442B00A180E3 /* Todo.xcdatamodeld */; };
+		E849A8EC283E6A00001BAA36 /* TodoDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E849A8EB283E6A00001BAA36 /* TodoDateFormatter.swift */; };
+		E849A8EE283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E849A8ED283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift */; };
 		E86E1761282984C400D327B7 /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E1760282984C400D327B7 /* WeatherInfo.swift */; };
 		E8981EA128328C510000E5F0 /* AddTodoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8981EA028328C510000E5F0 /* AddTodoItemViewController.swift */; };
 		E89E85CF28042BD100DDAB0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E85CE28042BD100DDAB0C /* AppDelegate.swift */; };
@@ -20,7 +22,6 @@
 		E89E85DB28042BD300DDAB0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89E85D928042BD300DDAB0C /* LaunchScreen.storyboard */; };
 		E8BE9A41283880B700B187A0 /* AddTodoItemViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BE9A40283880B700B187A0 /* AddTodoItemViewControllerTests.swift */; };
 		E8DB2840282CC23200D98141 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB283F282CC23200D98141 /* Todo.swift */; };
-		E8DB2842282CC99B00D98141 /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB2841282CC99B00D98141 /* CustomDateFormatter.swift */; };
 		E8DD19A6282BFD8D00D5FC78 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD19A5282BFD8D00D5FC78 /* Storage.swift */; };
 		E8FEDA50282C0A090051E8B0 /* HourlyWeatherSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FEDA4F282C0A090051E8B0 /* HourlyWeatherSubView.swift */; };
 		E8FEDA52282C0EA90051E8B0 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FEDA51282C0EA90051E8B0 /* Location.swift */; };
@@ -41,6 +42,8 @@
 		A14227019291EADF1371BC69 /* Pods-WeatherCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherCalendar.release.xcconfig"; path = "Target Support Files/Pods-WeatherCalendar/Pods-WeatherCalendar.release.xcconfig"; sourceTree = "<group>"; };
 		E848244D282E216400A180E3 /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
 		E8482451282E442B00A180E3 /* Todo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Todo.xcdatamodel; sourceTree = "<group>"; };
+		E849A8EB283E6A00001BAA36 /* TodoDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDateFormatter.swift; sourceTree = "<group>"; };
+		E849A8ED283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherDateFormatter.swift; sourceTree = "<group>"; };
 		E86E1760282984C400D327B7 /* WeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
 		E8981EA028328C510000E5F0 /* AddTodoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoItemViewController.swift; sourceTree = "<group>"; };
 		E89E85CB28042BD100DDAB0C /* WeatherCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,7 +57,6 @@
 		E8BE9A3E283880B700B187A0 /* WeatherCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8BE9A40283880B700B187A0 /* AddTodoItemViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoItemViewControllerTests.swift; sourceTree = "<group>"; };
 		E8DB283F282CC23200D98141 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
-		E8DB2841282CC99B00D98141 /* CustomDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
 		E8DD19A5282BFD8D00D5FC78 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		E8FEDA4F282C0A090051E8B0 /* HourlyWeatherSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherSubView.swift; sourceTree = "<group>"; };
 		E8FEDA51282C0EA90051E8B0 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -115,6 +117,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		E849A8EA283E69B6001BAA36 /* CustomDateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				E849A8ED283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift */,
+				E849A8EB283E6A00001BAA36 /* TodoDateFormatter.swift */,
+			);
+			path = CustomDateFormatter;
+			sourceTree = "<group>";
+		};
 		E89E85C228042BD100DDAB0C = {
 			isa = PBXGroup;
 			children = (
@@ -141,8 +152,8 @@
 				E89E85CE28042BD100DDAB0C /* AppDelegate.swift */,
 				E89E85D028042BD100DDAB0C /* SceneDelegate.swift */,
 				E848244F282E2A5300A180E3 /* ViewController */,
-				E8DB2841282CC99B00D98141 /* CustomDateFormatter.swift */,
 				E8039454282D7C2800B9C310 /* CustomView */,
+				E849A8EA283E69B6001BAA36 /* CustomDateFormatter */,
 				E8DB283E282CB86D00D98141 /* Literal */,
 				E8DD19A4282BEF7C00D5FC78 /* Model */,
 				E89E85D428042BD100DDAB0C /* Main.storyboard */,
@@ -327,13 +338,14 @@
 			files = (
 				E89E85D328042BD100DDAB0C /* MainViewController.swift in Sources */,
 				E848244E282E216400A180E3 /* TodoTableViewController.swift in Sources */,
+				E849A8EE283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift in Sources */,
 				E8DB2840282CC23200D98141 /* Todo.swift in Sources */,
 				E8FEDA52282C0EA90051E8B0 /* Location.swift in Sources */,
 				E89E85CF28042BD100DDAB0C /* AppDelegate.swift in Sources */,
-				E8DB2842282CC99B00D98141 /* CustomDateFormatter.swift in Sources */,
 				E8FEDA50282C0A090051E8B0 /* HourlyWeatherSubView.swift in Sources */,
 				E8482452282E442B00A180E3 /* Todo.xcdatamodeld in Sources */,
 				E89E85D128042BD100DDAB0C /* SceneDelegate.swift in Sources */,
+				E849A8EC283E6A00001BAA36 /* TodoDateFormatter.swift in Sources */,
 				E86E1761282984C400D327B7 /* WeatherInfo.swift in Sources */,
 				E8DD19A6282BFD8D00D5FC78 /* Storage.swift in Sources */,
 				E8981EA128328C510000E5F0 /* AddTodoItemViewController.swift in Sources */,

@@ -27,7 +27,7 @@ class TodoTableViewController: UIViewController {
     }
     
     func setTodoList(accordingTo date: Date) {
-        let formattedDate = CustomDateFormatter.forTodo().string(from: date)
+        let formattedDate = TodoDateFormatter().string(from: date)
         todoList = Todo.List(date: date, list: Todo.fetchList(by: formattedDate))
         todoTable.reloadSections(IndexSet(0...0), with: .none)
     }
