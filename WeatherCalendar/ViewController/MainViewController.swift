@@ -13,22 +13,28 @@ class MainViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var hourlyWeatherView: UIStackView!
     
+    let hourlyWeatherCount = 10
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         calendar.dataSource = self
         calendar.delegate = self
+        
         guard let todoTableVC = children.first as? TodoTableViewController else {
             return
         }
         todoTableVC.delegate = self
         
         initAppearance(with: calendar.appearance)
-        initHourlyWeatherView()
         
         // weekday 한/영 설정
         calendar.locale = Locale(identifier: "ko_KR")
 //        calendar.locale = Locale(identifier: "en_EN")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchHourlyWeatherData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,9 +46,7 @@ class MainViewController: UIViewController {
         addTodoItemVC.selectedDate = calendar.selectedDate
     }
     
-    // MARK: - Private Method
-    
-    private func initAppearance(with ca: FSCalendarAppearance) {
+    func initAppearance(with ca: FSCalendarAppearance) {
         ca.headerTitleColor = .red
         ca.weekdayTextColor = .red
         
@@ -61,26 +65,26 @@ class MainViewController: UIViewController {
 //        ca.borderRadius = 0
     }
     
-    private func initHourlyWeatherView() {
-        let subViewCount = 10
-        Task {
-            guard let weatherInfo = try? await WeatherData.of(location: Location.seoul.coordinates)?.hourly else {
-                return
-            }
-            
-            for view in hourlyWeatherView.arrangedSubviews {
-                hourlyWeatherView.removeArrangedSubview(view)
-            }
-            let startIndex = weatherInfo.startIndex
-            for i in startIndex..<startIndex + subViewCount {
-                let subView = HourlyWeatherSubView.of(dt: Double(weatherInfo[i].dt), temp: weatherInfo[i].temp, iconId: weatherInfo[i].weather[0].icon)
-                hourlyWeatherView.addArrangedSubview(subView)
-                subView.snp.makeConstraints {
-                    $0.width.equalTo(60)
+    func fetchHourlyWeatherData() {
+        OpenWeatherMapService(location: Location.seoul.coordinates).fetchWeatherData { [self] (result: Result<WeatherData, APIRequestError>) in
+            switch result {
+            case .success(let data):
+                let hourlyData = data.hourly
+                for i in 0..<hourlyWeatherCount {
+                    DispatchQueue.main.async {
+                        let subView = HourlyWeatherSubView.of(dt: Double(hourlyData[i].dt), temp: hourlyData[i].temp, iconId: hourlyData[i].weather[0].icon)
+                        self.hourlyWeatherView.addArrangedSubview(subView)
+                        subView.snp.makeConstraints {
+                            $0.width.equalTo(60)
+                        }
+                    }
                 }
+            case .failure(let error):
+                debugPrint(error.localizedDescription)
             }
         }
     }
+    
 }
 
 // MARK: - FSCalendar DataSource & Delegate

@@ -12,6 +12,9 @@
 		E8482452282E442B00A180E3 /* Todo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8482450282E442B00A180E3 /* Todo.xcdatamodeld */; };
 		E849A8EC283E6A00001BAA36 /* TodoDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E849A8EB283E6A00001BAA36 /* TodoDateFormatter.swift */; };
 		E849A8EE283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E849A8ED283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift */; };
+		E849A8F3283E74F8001BAA36 /* OpenWeatherMapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E849A8F2283E74F8001BAA36 /* OpenWeatherMapService.swift */; };
+		E849A8F5283E9213001BAA36 /* WeatherServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E849A8F4283E9212001BAA36 /* WeatherServiceProtocol.swift */; };
+		E849A8F7283E92D9001BAA36 /* APIRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E849A8F6283E92D9001BAA36 /* APIRequestError.swift */; };
 		E86E1761282984C400D327B7 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E1760282984C400D327B7 /* WeatherData.swift */; };
 		E8981EA128328C510000E5F0 /* AddTodoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8981EA028328C510000E5F0 /* AddTodoItemViewController.swift */; };
 		E89E85CF28042BD100DDAB0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E85CE28042BD100DDAB0C /* AppDelegate.swift */; };
@@ -44,6 +47,9 @@
 		E8482451282E442B00A180E3 /* Todo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Todo.xcdatamodel; sourceTree = "<group>"; };
 		E849A8EB283E6A00001BAA36 /* TodoDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDateFormatter.swift; sourceTree = "<group>"; };
 		E849A8ED283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherDateFormatter.swift; sourceTree = "<group>"; };
+		E849A8F2283E74F8001BAA36 /* OpenWeatherMapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapService.swift; sourceTree = "<group>"; };
+		E849A8F4283E9212001BAA36 /* WeatherServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceProtocol.swift; sourceTree = "<group>"; };
+		E849A8F6283E92D9001BAA36 /* APIRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestError.swift; sourceTree = "<group>"; };
 		E86E1760282984C400D327B7 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		E8981EA028328C510000E5F0 /* AddTodoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoItemViewController.swift; sourceTree = "<group>"; };
 		E89E85CB28042BD100DDAB0C /* WeatherCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,21 +123,39 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		E849A8EA283E69B6001BAA36 /* CustomDateFormatter */ = {
+		E849A8EA283E69B6001BAA36 /* DateFormatter */ = {
 			isa = PBXGroup;
 			children = (
 				E849A8ED283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift */,
 				E849A8EB283E6A00001BAA36 /* TodoDateFormatter.swift */,
 			);
-			path = CustomDateFormatter;
+			path = DateFormatter;
 			sourceTree = "<group>";
 		};
 		E849A8EF283E6E25001BAA36 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				E86E1760282984C400D327B7 /* WeatherData.swift */,
+				E849A8F4283E9212001BAA36 /* WeatherServiceProtocol.swift */,
+				E849A8F2283E74F8001BAA36 /* OpenWeatherMapService.swift */,
+				E849A8F8283E9428001BAA36 /* Model */,
 			);
 			path = Weather;
+			sourceTree = "<group>";
+		};
+		E849A8F8283E9428001BAA36 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E86E1760282984C400D327B7 /* WeatherData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E849A8F9283E9445001BAA36 /* Todo */ = {
+			isa = PBXGroup;
+			children = (
+				E8DB283F282CC23200D98141 /* Todo.swift */,
+			);
+			path = Todo;
 			sourceTree = "<group>";
 		};
 		E89E85C228042BD100DDAB0C = {
@@ -161,9 +185,9 @@
 				E89E85D028042BD100DDAB0C /* SceneDelegate.swift */,
 				E848244F282E2A5300A180E3 /* ViewController */,
 				E8039454282D7C2800B9C310 /* CustomView */,
-				E849A8EA283E69B6001BAA36 /* CustomDateFormatter */,
+				E849A8EA283E69B6001BAA36 /* DateFormatter */,
 				E8DB283E282CB86D00D98141 /* Literal */,
-				E8DD19A4282BEF7C00D5FC78 /* Model */,
+				E8DD19A4282BEF7C00D5FC78 /* Service */,
 				E89E85D428042BD100DDAB0C /* Main.storyboard */,
 				E89E85D728042BD200DDAB0C /* Assets.xcassets */,
 				E89E85D928042BD300DDAB0C /* LaunchScreen.storyboard */,
@@ -189,14 +213,15 @@
 			path = Literal;
 			sourceTree = "<group>";
 		};
-		E8DD19A4282BEF7C00D5FC78 /* Model */ = {
+		E8DD19A4282BEF7C00D5FC78 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				E849A8F6283E92D9001BAA36 /* APIRequestError.swift */,
 				E849A8EF283E6E25001BAA36 /* Weather */,
-				E8DB283F282CC23200D98141 /* Todo.swift */,
+				E849A8F9283E9445001BAA36 /* Todo */,
 				E8482450282E442B00A180E3 /* Todo.xcdatamodeld */,
 			);
-			path = Model;
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,14 +372,17 @@
 				E89E85D328042BD100DDAB0C /* MainViewController.swift in Sources */,
 				E848244E282E216400A180E3 /* TodoTableViewController.swift in Sources */,
 				E849A8EE283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift in Sources */,
+				E849A8F5283E9213001BAA36 /* WeatherServiceProtocol.swift in Sources */,
 				E8DB2840282CC23200D98141 /* Todo.swift in Sources */,
 				E8FEDA52282C0EA90051E8B0 /* Location.swift in Sources */,
 				E89E85CF28042BD100DDAB0C /* AppDelegate.swift in Sources */,
+				E849A8F3283E74F8001BAA36 /* OpenWeatherMapService.swift in Sources */,
 				E8FEDA50282C0A090051E8B0 /* HourlyWeatherSubView.swift in Sources */,
 				E8482452282E442B00A180E3 /* Todo.xcdatamodeld in Sources */,
 				E89E85D128042BD100DDAB0C /* SceneDelegate.swift in Sources */,
 				E849A8EC283E6A00001BAA36 /* TodoDateFormatter.swift in Sources */,
 				E86E1761282984C400D327B7 /* WeatherData.swift in Sources */,
+				E849A8F7283E92D9001BAA36 /* APIRequestError.swift in Sources */,
 				E8DD19A6282BFD8D00D5FC78 /* Storage.swift in Sources */,
 				E8981EA128328C510000E5F0 /* AddTodoItemViewController.swift in Sources */,
 			);
