@@ -9,10 +9,6 @@ import UIKit
 import FSCalendar // https://github.com/WenchaoD/FSCalendar
 import SnapKit
 
-protocol TodoTableDelegate {
-    func loadTodoList(selected date: Date)
-}
-
 class MainViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var hourlyWeatherView: UIStackView!
@@ -116,15 +112,6 @@ extension MainViewController: CalendarDelegate {
         calendar.reloadData() // Event Dot 을 위해 reload
         calendar(self.calendar, didSelect: date, at: .current) // 해당 날짜 선택 이벤트
         calendar.select(date) // 해당 날짜로 포커스 이동
-        scrollToBottom() // 제일 아래로 스크롤
-    }
-    
-    private func scrollToBottom() {
-        guard let todoTableVC = children.first as? TodoTableViewController else {
-            return
-        }
-        let numOfRows = todoTableVC.todoTable.numberOfRows(inSection: 0)
-        let indexPath = IndexPath(row: numOfRows - 1, section: 0)
-        todoTableVC.todoTable.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        todoTableDelegate?.scrollToBottom() // 제일 아래로 스크롤
     }
 }

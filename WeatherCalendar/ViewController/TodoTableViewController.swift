@@ -72,4 +72,10 @@ extension TodoTableViewController: TodoTableDelegate {
     func loadTodoList(selected date: Date) {
         reloadTodoList(selected: date)
     }
+    
+    func scrollToBottom() {
+        let numOfRows = todoTable.numberOfRows(inSection: 0)
+        let indexPath = IndexPath(row: numOfRows - 1, section: 0)
+        todoTable.scrollToRow(at: indexPath, at: .bottom, animated: true)
+    }
 }
