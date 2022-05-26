@@ -7,16 +7,11 @@
 
 import UIKit
 
-// date 데이터를 전달 받는 곳에서 구현해주면 됨
-protocol SendDateDelegate {
-    func send(date: Date)
-}
-
 class AddTodoItemViewController: UIViewController {
     @IBOutlet weak var content: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     var selectedDate: Date?
-    var delegate: SendDateDelegate?
+    var calendarDelegate: CalendarDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +36,7 @@ class AddTodoItemViewController: UIViewController {
         let formattedDate = TodoDateFormatter().string(from: datePicker.date)
         let item = Todo.Item.create(date: formattedDate, content: self.content.text ?? "")
         Todo.save(item: item)
-        delegate?.send(date: datePicker.date)
+        calendarDelegate?.showTodoList(date: datePicker.date)
         presentingViewController?.dismiss(animated: true)
     }
 }

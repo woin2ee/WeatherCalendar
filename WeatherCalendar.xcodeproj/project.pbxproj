@@ -15,6 +15,7 @@
 		E849A8F3283E74F8001BAA36 /* OpenWeatherMapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E849A8F2283E74F8001BAA36 /* OpenWeatherMapService.swift */; };
 		E849A8F5283E9213001BAA36 /* WeatherServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E849A8F4283E9212001BAA36 /* WeatherServiceProtocol.swift */; };
 		E849A8F7283E92D9001BAA36 /* APIRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E849A8F6283E92D9001BAA36 /* APIRequestError.swift */; };
+		E85B1066283F44C100C859F4 /* CalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B1065283F44C100C859F4 /* CalendarDelegate.swift */; };
 		E86E1761282984C400D327B7 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E1760282984C400D327B7 /* WeatherData.swift */; };
 		E8981EA128328C510000E5F0 /* AddTodoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8981EA028328C510000E5F0 /* AddTodoItemViewController.swift */; };
 		E89E85CF28042BD100DDAB0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E85CE28042BD100DDAB0C /* AppDelegate.swift */; };
@@ -50,6 +51,7 @@
 		E849A8F2283E74F8001BAA36 /* OpenWeatherMapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapService.swift; sourceTree = "<group>"; };
 		E849A8F4283E9212001BAA36 /* WeatherServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceProtocol.swift; sourceTree = "<group>"; };
 		E849A8F6283E92D9001BAA36 /* APIRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestError.swift; sourceTree = "<group>"; };
+		E85B1065283F44C100C859F4 /* CalendarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDelegate.swift; sourceTree = "<group>"; };
 		E86E1760282984C400D327B7 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		E8981EA028328C510000E5F0 /* AddTodoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoItemViewController.swift; sourceTree = "<group>"; };
 		E89E85CB28042BD100DDAB0C /* WeatherCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +118,7 @@
 		E848244F282E2A5300A180E3 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E85B1064283F44AE00C859F4 /* DelegateProtocol */,
 				E89E85D228042BD100DDAB0C /* MainViewController.swift */,
 				E848244D282E216400A180E3 /* TodoTableViewController.swift */,
 				E8981EA028328C510000E5F0 /* AddTodoItemViewController.swift */,
@@ -156,6 +159,14 @@
 				E8DB283F282CC23200D98141 /* Todo.swift */,
 			);
 			path = Todo;
+			sourceTree = "<group>";
+		};
+		E85B1064283F44AE00C859F4 /* DelegateProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				E85B1065283F44C100C859F4 /* CalendarDelegate.swift */,
+			);
+			path = DelegateProtocol;
 			sourceTree = "<group>";
 		};
 		E89E85C228042BD100DDAB0C = {
@@ -378,6 +389,7 @@
 				E89E85CF28042BD100DDAB0C /* AppDelegate.swift in Sources */,
 				E849A8F3283E74F8001BAA36 /* OpenWeatherMapService.swift in Sources */,
 				E8FEDA50282C0A090051E8B0 /* HourlyWeatherSubView.swift in Sources */,
+				E85B1066283F44C100C859F4 /* CalendarDelegate.swift in Sources */,
 				E8482452282E442B00A180E3 /* Todo.xcdatamodeld in Sources */,
 				E89E85D128042BD100DDAB0C /* SceneDelegate.swift in Sources */,
 				E849A8EC283E6A00001BAA36 /* TodoDateFormatter.swift in Sources */,

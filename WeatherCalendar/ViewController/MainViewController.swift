@@ -39,7 +39,7 @@ class MainViewController: UIViewController {
             let nc = segue.destination as? UINavigationController,
             let addTodoItemVC = nc.topViewController as? AddTodoItemViewController
         else { return }
-        addTodoItemVC.delegate = self
+        addTodoItemVC.calendarDelegate = self
         addTodoItemVC.selectedDate = calendar.selectedDate
     }
     
@@ -105,14 +105,18 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
     }
 }
 
-// MARK: - Delegate로 Data 전달
+// MARK: - CalendarDelegate 구현
 
-extension MainViewController: SendDateDelegate {
-    func send(date: Date) {
+extension MainViewController: CalendarDelegate {
+    func updateEventDot() {
         calendar.reloadData()
-        calendar(self.calendar, didSelect: date, at: .current)
-        calendar.select(date)
-        scrollToBottom()
+    }
+    
+    func showTodoList(date: Date) {
+        calendar.reloadData() // Event Dot 을 위해 reload
+        calendar(self.calendar, didSelect: date, at: .current) // 해당 날짜 선택 이벤트
+        calendar.select(date) // 해당 날짜로 포커스 이동
+        scrollToBottom() // 제일 아래로 스크롤
     }
     
     private func scrollToBottom() {
@@ -122,13 +126,5 @@ extension MainViewController: SendDateDelegate {
         let numOfRows = todoTableVC.todoTable.numberOfRows(inSection: 0)
         let indexPath = IndexPath(row: numOfRows - 1, section: 0)
         todoTableVC.todoTable.scrollToRow(at: indexPath, at: .bottom, animated: true)
-    }
-}
-
-// MARK: - CalendarDelegate 구현
-
-extension MainViewController: CalendarDelegate {
-    func updateEventDot() {
-        calendar.reloadData()
     }
 }

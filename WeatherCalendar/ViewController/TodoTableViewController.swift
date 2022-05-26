@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol CalendarDelegate {
-    func updateEventDot()
-}
-
 class TodoTableViewController: UIViewController {
     @IBOutlet weak var todoTable: UITableView!
     
