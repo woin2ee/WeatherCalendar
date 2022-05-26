@@ -111,6 +111,7 @@ extension MainViewController: SendDateDelegate {
     func send(date: Date) {
         calendar.reloadData()
         calendar(self.calendar, didSelect: date, at: .current)
+        calendar.select(date)
         scrollToBottom()
     }
     
