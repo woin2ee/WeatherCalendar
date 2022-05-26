@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fetchHourlyWeatherData()
+        setupHourlyWeatherView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -60,22 +60,25 @@ class MainViewController: UIViewController {
 //        calendar.locale = Locale(identifier: "en_EN")
     }
     
-    func fetchHourlyWeatherData() {
+    func setupHourlyWeatherView() {
         OpenWeatherMapService(location: Location.seoul.coordinates).fetchWeatherData { [self] (result: Result<WeatherData, APIRequestError>) in
             switch result {
             case .success(let data):
-                let hourlyData = data.hourly
-                for i in 0..<hourlyWeatherCount {
-                    DispatchQueue.main.async {
-                        let subView = HourlyWeatherSubView.of(dt: Double(hourlyData[i].dt), temp: hourlyData[i].temp, iconId: hourlyData[i].weather[0].icon)
-                        self.hourlyWeatherView.addArrangedSubview(subView)
-                        subView.snp.makeConstraints {
-                            $0.width.equalTo(60)
-                        }
-                    }
-                }
+                drawHourlyWeatherView(by: data.hourly)
             case .failure(let error):
                 debugPrint(error.localizedDescription)
+            }
+        }
+    }
+    
+    func drawHourlyWeatherView(by data: [Hourly]) {
+        for i in 0..<hourlyWeatherCount {
+            DispatchQueue.main.async {
+                let subView = HourlyWeatherSubView.of(dt: Double(data[i].dt), temp: data[i].temp, iconId: data[i].weather[0].icon)
+                self.hourlyWeatherView.addArrangedSubview(subView)
+                subView.snp.makeConstraints {
+                    $0.width.equalTo(60)
+                }
             }
         }
     }
