@@ -15,6 +15,7 @@ class TodoTableViewController: UIViewController {
     @IBOutlet weak var todoTable: UITableView!
     
     private var todoList = Todo.List(date: Date(), list: [""])
+    
     var calendarDelegate: CalendarDelegate?
     
     override func viewDidLoad() {
@@ -29,6 +30,7 @@ class TodoTableViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         calendarDelegate = self.parent as? MainViewController
+        (self.parent as? MainViewController)?.todoTableDelegate = self
     }
     
     func reloadTodoList(selected date: Date) {
@@ -65,5 +67,13 @@ extension TodoTableViewController: UITableViewDataSource, UITableViewDelegate {
             $2(true)
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+}
+
+// MARK: - TodoTableDelegate 구현
+
+extension TodoTableViewController: TodoTableDelegate {
+    func loadTodoList(selected date: Date) {
+        reloadTodoList(selected: date)
     }
 }

@@ -9,11 +9,17 @@ import UIKit
 import FSCalendar // https://github.com/WenchaoD/FSCalendar
 import SnapKit
 
+protocol TodoTableDelegate {
+    func loadTodoList(selected date: Date)
+}
+
 class MainViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var hourlyWeatherView: UIStackView!
     
     let hourlyWeatherCount = 10
+    
+    var todoTableDelegate: TodoTableDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,10 +95,7 @@ class MainViewController: UIViewController {
 
 extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        guard let todoTableVC = children.first as? TodoTableViewController else {
-            return
-        }
-        todoTableVC.reloadTodoList(selected: date)
+        todoTableDelegate?.loadTodoList(selected: date)
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
