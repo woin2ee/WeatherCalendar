@@ -26,6 +26,11 @@ class TodoTableViewController: UIViewController {
         reloadTodoList(selected: Date())
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        calendarDelegate = self.parent as? MainViewController
+    }
+    
     func reloadTodoList(selected date: Date) {
         let formattedDate = TodoDateFormatter().string(from: date)
         todoList = Todo.List(date: date, list: Todo.fetchList(by: formattedDate))

@@ -21,12 +21,6 @@ class MainViewController: UIViewController {
         calendar.dataSource = self
         calendar.delegate = self
         
-        self.children.forEach {
-            if let vc = $0 as? TodoTableViewController {
-                vc.calendarDelegate = self
-            }
-        }
-        
         setupAppearance()
     }
     
