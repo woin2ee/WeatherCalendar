@@ -7,15 +7,15 @@
 
 import UIKit
 
-protocol ActionRequestDelegate {
-    func updateCalendar()
+protocol CalendarDelegate {
+    func updateEventDot()
 }
 
 class TodoTableViewController: UIViewController {
     @IBOutlet weak var todoTable: UITableView!
     
     private var todoList = Todo.List(date: Date(), list: [""])
-    var delegate: ActionRequestDelegate?
+    var calendarDelegate: CalendarDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,18 +23,17 @@ class TodoTableViewController: UIViewController {
         todoTable.dataSource = self
         todoTable.delegate = self
         
-        self.setTodoList(accordingTo: Date())
+        reloadTodoList(selected: Date())
     }
     
-    func setTodoList(accordingTo date: Date) {
+    func reloadTodoList(selected date: Date) {
         let formattedDate = TodoDateFormatter().string(from: date)
         todoList = Todo.List(date: date, list: Todo.fetchList(by: formattedDate))
         todoTable.reloadSections(IndexSet(0...0), with: .none)
     }
 }
 
-
-// MARK: - DataSource & Delegate
+// MARK: - UITableView DataSource & Delegate
 extension TodoTableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.todoList.count
@@ -52,10 +51,12 @@ extension TodoTableViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "삭제") {
-            Todo.delete(date: self.todoList.date, content: self.todoList[indexPath.row])
-            self.setTodoList(accordingTo: self.todoList.date)
-            self.delegate?.updateCalendar()
+        let deleteAction = UIContextualAction(style: .destructive, title: "삭제") { [self] in
+            Todo.delete(date: todoList.date, content: todoList[indexPath.row])
+            reloadTodoList(selected: todoList.date)
+            if todoList.list.isEmpty {
+                calendarDelegate?.updateEventDot()
+            }
             $2(true)
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])

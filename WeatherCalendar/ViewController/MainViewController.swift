@@ -21,16 +21,13 @@ class MainViewController: UIViewController {
         calendar.dataSource = self
         calendar.delegate = self
         
-        guard let todoTableVC = children.first as? TodoTableViewController else {
-            return
+        self.children.forEach {
+            if let vc = $0 as? TodoTableViewController {
+                vc.calendarDelegate = self
+            }
         }
-        todoTableVC.delegate = self
         
-        initAppearance(with: calendar.appearance)
-        
-        // weekday 한/영 설정
-        calendar.locale = Locale(identifier: "ko_KR")
-//        calendar.locale = Locale(identifier: "en_EN")
+        setupAppearance()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,23 +43,27 @@ class MainViewController: UIViewController {
         addTodoItemVC.selectedDate = calendar.selectedDate
     }
     
-    func initAppearance(with ca: FSCalendarAppearance) {
-        ca.headerTitleColor = .red
-        ca.weekdayTextColor = .red
+    func setupAppearance() {
+        calendar.appearance.headerTitleColor = .red
+        calendar.appearance.weekdayTextColor = .red
         
-        ca.eventSelectionColor = .green
-        ca.eventDefaultColor = .magenta
+        calendar.appearance.eventSelectionColor = .green
+        calendar.appearance.eventDefaultColor = .magenta
         
-        ca.selectionColor = .brown
-        ca.todayColor = .blue
+        calendar.appearance.selectionColor = .brown
+        calendar.appearance.todayColor = .blue
         
-        ca.todaySelectionColor = .red
+        calendar.appearance.todaySelectionColor = .red
         
-        ca.headerDateFormat = ""
+        calendar.appearance.headerDateFormat = ""
         
-        ca.headerMinimumDissolvedAlpha = 0.0
+        calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         
 //        ca.borderRadius = 0
+        
+        // weekday 한/영 설정
+        calendar.locale = Locale(identifier: "ko_KR")
+//        calendar.locale = Locale(identifier: "en_EN")
     }
     
     func fetchHourlyWeatherData() {
@@ -94,7 +95,7 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
         guard let todoTableVC = children.first as? TodoTableViewController else {
             return
         }
-        todoTableVC.setTodoList(accordingTo: date)
+        todoTableVC.reloadTodoList(selected: date)
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
@@ -123,9 +124,10 @@ extension MainViewController: SendDateDelegate {
     }
 }
 
-// MARK: -
-extension MainViewController: ActionRequestDelegate {
-    func updateCalendar() {
+// MARK: - CalendarDelegate 구현
+
+extension MainViewController: CalendarDelegate {
+    func updateEventDot() {
         calendar.reloadData()
     }
 }
