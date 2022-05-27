@@ -8,29 +8,25 @@
 import Foundation
 import CoreData
 
-struct TodoService {
-    // MARK: - Core Data stack
-    
-    private static var persistentContainer: NSPersistentContainer = {
+class TodoService: CoreDataServiceProtocol {
+    var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Todo")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores { (storeDescription, error) in
             if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                debugPrint("Unresolved error \(error), \(error.userInfo)")
             }
-        })
+        }
         return container
     }()
-    private static let context = persistentContainer.viewContext
-    private static let entityName = "TodoList"
-    private static let todoListEntity = NSEntityDescription.entity(forEntityName: entityName, in: context)
+    let entityName: String = "TodoList"
     
     // MARK: - Core Data Persistent API
     
-    static func save(item: TodoItem) {
+    func save(item: TodoItem) {
         let fetchResult = getFetchResult(request: getFetchRequestFiltered(by: item.date))
         
         if fetchResult.isEmpty {
-            guard let entity = todoListEntity else { return }
+            guard let entity = entity else { return }
             let list = [item.content]
             let managedObj = NSManagedObject(entity: entity, insertInto: context)
             managedObj.setValue(item.date, forKey: "date")
@@ -42,10 +38,10 @@ struct TodoService {
             managedObj?.setValue(newList, forKey: "list")
         }
         
-        self.saveContext()
+        saveContext()
     }
     
-    static func fetchAll() -> [String:[String]] {
+    func fetchAll() -> [String:[String]] {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         let fetchResult = getFetchResult(request: fetchRequest)
         var todo = [String:[String]]()
@@ -55,12 +51,12 @@ struct TodoService {
         return todo
     }
     
-    static func fetchList(by date: String) -> [String] {
+    func fetchList(by date: String) -> [String] {
         let fetchResult = getFetchResult(request: getFetchRequestFiltered(by: date))
         return fetchResult.first?.value(forKey: "list") as? [String] ?? []
     }
     
-    static func fetchAllExistentDate() -> [String] {
+    func fetchAllExistentDate() -> [String] {
         var dates = [String]()
         fetchAllTodoListAndExecuteEach {
             dates.append($0.value(forKey: "date") as? String ?? "")
@@ -68,17 +64,17 @@ struct TodoService {
         return dates
     }
     
-    static func delete(date: String, content: String) {
+    func delete(date: String, content: String) {
         let fetchResult = getFetchResult(request: getFetchRequestFiltered(by: date))
         var list = fetchResult.first?.value(forKey: "list") as? [String]
         guard let index = list?.firstIndex(of: content) else { return }
         list?.remove(at: index)
         let managedObj = fetchResult.first
         managedObj?.setValue(list, forKey: "list")
-        self.saveContext()
+        saveContext()
     }
     
-    static func showAllTodoList() {
+    func showAllTodoList() {
         fetchAllTodoListAndExecuteEach {
             print("\($0.value(forKey: "date") as? String ?? "nil") : \($0.value(forKey: "list") as? [String] ?? ["nil"])")
         }
@@ -86,7 +82,7 @@ struct TodoService {
     
     // MARK: - Private Method
     
-    private static func getFetchResult(request: NSFetchRequest<NSManagedObject>) -> [NSManagedObject] {
+    private func getFetchResult(request: NSFetchRequest<NSManagedObject>) -> [NSManagedObject] {
         do {
             return try context.fetch(request)
         } catch {
@@ -95,30 +91,17 @@ struct TodoService {
         }
     }
     
-    private static func getFetchRequestFiltered(by date: String) -> NSFetchRequest<NSManagedObject> {
+    private func getFetchRequestFiltered(by date: String) -> NSFetchRequest<NSManagedObject> {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "date = %@", date)
         return fetchRequest
     }
     
-    private static func fetchAllTodoListAndExecuteEach(procedure: (NSManagedObject) -> Void) {
+    private func fetchAllTodoListAndExecuteEach(procedure: (NSManagedObject) -> Void) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         let fetchResult = getFetchResult(request: fetchRequest)
         fetchResult.forEach {
             procedure($0)
-        }
-    }
-    
-    // MARK: - Core Data Saving support
-    
-    private static func saveContext () {
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
         }
     }
 }

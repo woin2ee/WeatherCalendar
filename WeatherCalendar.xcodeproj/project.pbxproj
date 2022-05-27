@@ -20,6 +20,7 @@
 		E86E1761282984C400D327B7 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E1760282984C400D327B7 /* WeatherData.swift */; };
 		E87157C528411D0C007D1507 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87157C428411D0C007D1507 /* TodoItem.swift */; };
 		E87157C728412032007D1507 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87157C628412032007D1507 /* TodoList.swift */; };
+		E87157D428412A37007D1507 /* CoreDataServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87157D328412A37007D1507 /* CoreDataServiceProtocol.swift */; };
 		E8981EA128328C510000E5F0 /* AddTodoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8981EA028328C510000E5F0 /* AddTodoItemViewController.swift */; };
 		E89E85CF28042BD100DDAB0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E85CE28042BD100DDAB0C /* AppDelegate.swift */; };
 		E89E85D128042BD100DDAB0C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89E85D028042BD100DDAB0C /* SceneDelegate.swift */; };
@@ -59,6 +60,7 @@
 		E86E1760282984C400D327B7 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		E87157C428411D0C007D1507 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		E87157C628412032007D1507 /* TodoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
+		E87157D328412A37007D1507 /* CoreDataServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataServiceProtocol.swift; sourceTree = "<group>"; };
 		E8981EA028328C510000E5F0 /* AddTodoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoItemViewController.swift; sourceTree = "<group>"; };
 		E89E85CB28042BD100DDAB0C /* WeatherCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89E85CE28042BD100DDAB0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				E849A8F6283E92D9001BAA36 /* APIRequestError.swift */,
+				E87157D328412A37007D1507 /* CoreDataServiceProtocol.swift */,
 				E849A8EF283E6E25001BAA36 /* Weather */,
 				E849A8F9283E9445001BAA36 /* Todo */,
 				E8482450282E442B00A180E3 /* Todo.xcdatamodeld */,
@@ -404,6 +407,7 @@
 				E849A8F5283E9213001BAA36 /* WeatherServiceProtocol.swift in Sources */,
 				E8DB2840282CC23200D98141 /* TodoService.swift in Sources */,
 				E8FEDA52282C0EA90051E8B0 /* Location.swift in Sources */,
+				E87157D428412A37007D1507 /* CoreDataServiceProtocol.swift in Sources */,
 				E89E85CF28042BD100DDAB0C /* AppDelegate.swift in Sources */,
 				E849A8F3283E74F8001BAA36 /* OpenWeatherMapService.swift in Sources */,
 				E8FEDA50282C0A090051E8B0 /* HourlyWeatherSubView.swift in Sources */,
