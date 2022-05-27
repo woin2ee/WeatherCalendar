@@ -11,7 +11,7 @@ class AddTodoItemViewController: UIViewController {
     @IBOutlet weak var content: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     var selectedDate: Date?
-    var calendarDelegate: CalendarDelegate?
+    weak var calendarDelegate: CalendarDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

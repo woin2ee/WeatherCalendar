@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol TodoTableDelegate {
+protocol TodoTableDelegate: AnyObject {
     func loadTodoList(selected date: Date)
     func scrollToBottom()
 }

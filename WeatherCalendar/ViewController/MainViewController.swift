@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
     
     let hourlyWeatherCount = 10
     
-    var todoTableDelegate: TodoTableDelegate?
+    weak var todoTableDelegate: TodoTableDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

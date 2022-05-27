@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CalendarDelegate {
+protocol CalendarDelegate: AnyObject {
     func updateEventDot()
     func showTodoList(date: Date)
 }
