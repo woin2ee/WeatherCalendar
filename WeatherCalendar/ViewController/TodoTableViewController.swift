@@ -76,6 +76,7 @@ extension TodoTableViewController: TodoTableDelegate {
     
     func scrollToBottom() {
         let numOfRows = todoTable.numberOfRows(inSection: 0)
+        guard (1...todoList.count).contains(numOfRows) else { return }
         let indexPath = IndexPath(row: numOfRows - 1, section: 0)
         todoTable.scrollToRow(at: indexPath, at: .bottom, animated: true)
     }
