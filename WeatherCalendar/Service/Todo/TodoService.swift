@@ -1,5 +1,5 @@
 //
-//  Todo.swift
+//  TodoService.swift
 //  WeatherCalendar
 //
 //  Created by Jaewon on 2022/05/12.
@@ -8,29 +8,7 @@
 import Foundation
 import CoreData
 
-struct Todo {
-    struct List {
-        let date: Date
-        let list: [String]
-        
-        var count: Int {
-            return list.count
-        }
-        
-        subscript (index: Int) -> String {
-            return list[index]
-        }
-    }
-    
-    struct Item {
-        let date: String
-        let content: String
-        
-        static func create(date: String, content: String) -> Item {
-            return Item(date: date, content: content)
-        }
-    }
-    
+struct TodoService {
     // MARK: - Core Data stack
     
     private static var persistentContainer: NSPersistentContainer = {
@@ -48,7 +26,7 @@ struct Todo {
     
     // MARK: - Core Data Persistent API
     
-    static func save(item: Todo.Item) {
+    static func save(item: TodoItem) {
         let fetchResult = getFetchResult(request: getFetchRequestFiltered(by: item.date))
         
         if fetchResult.isEmpty {
@@ -90,9 +68,8 @@ struct Todo {
         return dates
     }
     
-    static func delete(date: Date, content: String) {
-        let formattedDate = TodoDateFormatter().string(from: date)
-        let fetchResult = getFetchResult(request: getFetchRequestFiltered(by: formattedDate))
+    static func delete(date: String, content: String) {
+        let fetchResult = getFetchResult(request: getFetchRequestFiltered(by: date))
         var list = fetchResult.first?.value(forKey: "list") as? [String]
         guard let index = list?.firstIndex(of: content) else { return }
         list?.remove(at: index)

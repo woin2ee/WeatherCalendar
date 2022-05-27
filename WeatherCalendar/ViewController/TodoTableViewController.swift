@@ -10,7 +10,7 @@ import UIKit
 class TodoTableViewController: UIViewController {
     @IBOutlet weak var todoTable: UITableView!
     
-    private var todoList = Todo.List(date: Date(), list: [""])
+    var todoList = TodoList(date: TodoDateFormatter().string(from: Date()), list: [""])
     
     weak var calendarDelegate: CalendarDelegate?
     
@@ -20,7 +20,7 @@ class TodoTableViewController: UIViewController {
         todoTable.dataSource = self
         todoTable.delegate = self
         
-        reloadTodoList(selected: Date())
+        reloadTodoList(selected: TodoDateFormatter().string(from: Date()))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,9 +30,8 @@ class TodoTableViewController: UIViewController {
         (self.parent as? MainViewController)?.todoTableDelegate = self
     }
     
-    func reloadTodoList(selected date: Date) {
-        let formattedDate = TodoDateFormatter().string(from: date)
-        todoList = Todo.List(date: date, list: Todo.fetchList(by: formattedDate))
+    func reloadTodoList(selected date: String) {
+        todoList = TodoList(date: date, list: TodoService.fetchList(by: date))
         todoTable.reloadSections(IndexSet(0...0), with: .none)
     }
 }
@@ -56,7 +55,7 @@ extension TodoTableViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "삭제") { [self] in
-            Todo.delete(date: todoList.date, content: todoList[indexPath.row])
+            TodoService.delete(date: todoList.date, content: todoList[indexPath.row])
             reloadTodoList(selected: todoList.date)
             if todoList.list.isEmpty {
                 calendarDelegate?.updateEventDot()
@@ -71,7 +70,8 @@ extension TodoTableViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension TodoTableViewController: TodoTableDelegate {
     func loadTodoList(selected date: Date) {
-        reloadTodoList(selected: date)
+        let formattedDate = TodoDateFormatter().string(from: date)
+        reloadTodoList(selected: formattedDate)
     }
     
     func scrollToBottom() {

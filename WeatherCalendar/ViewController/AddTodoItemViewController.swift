@@ -34,8 +34,8 @@ class AddTodoItemViewController: UIViewController {
     // 추가 버튼
     @IBAction func addTodoItem(_ sender: Any) {
         let formattedDate = TodoDateFormatter().string(from: datePicker.date)
-        let item = Todo.Item.create(date: formattedDate, content: self.content.text ?? "")
-        Todo.save(item: item)
+        let item = TodoItem.create(date: formattedDate, content: self.content.text ?? "")
+        TodoService.save(item: item)
         calendarDelegate?.showTodoList(date: datePicker.date)
         presentingViewController?.dismiss(animated: true)
     }
