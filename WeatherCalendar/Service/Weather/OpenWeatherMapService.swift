@@ -14,8 +14,9 @@ struct OpenWeatherMapService: WeatherServiceProtocol {
     
     func fetchWeatherData(completion: @escaping (Result<WeatherData, APIRequestError>) -> Void) {
         // URL 형식 참조: https://openweathermap.org/api/one-call-api
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(location.lat)&lon=\(location.lon)&exclude=minutely,alerts&appid=\(Storage.API_KEY)")
-        else {
+        guard let url = URL(
+            string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(location.lat)&lon=\(location.lon)&exclude=minutely,alerts&appid=\(Storage.API_KEY)"
+        ) else {
             return completion(.failure(.invalidURL))
         }
         

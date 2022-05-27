@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 struct HourlyWeatherSubView {
-    
     static func of(dt: Double, temp kelvin: Double, iconId: String) -> UIView {
         let hourLabel: UILabel = {
             let lbl = UILabel()
@@ -60,5 +59,4 @@ struct HourlyWeatherSubView {
             $0.top.equalTo(views[1].snp.bottom).offset(2)
         }
     }
-    
 }

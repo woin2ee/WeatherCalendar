@@ -46,30 +46,19 @@ class MainViewController: UIViewController {
     }
     
     func setupAppearance() {
-        calendar.appearance.headerTitleColor = .red
-        calendar.appearance.weekdayTextColor = .red
-        
-        calendar.appearance.eventSelectionColor = .green
-        calendar.appearance.eventDefaultColor = .magenta
-        
-        calendar.appearance.selectionColor = .brown
-        calendar.appearance.todayColor = .blue
-        
-        calendar.appearance.todaySelectionColor = .red
-        
-        calendar.appearance.headerDateFormat = ""
-        
-        calendar.appearance.headerMinimumDissolvedAlpha = 0.0
-        
-//        ca.borderRadius = 0
-        
-        // weekday 한/영 설정
+        calendar.appearance.weekdayTextColor = .black
         calendar.locale = Locale(identifier: "ko_KR")
-//        calendar.locale = Locale(identifier: "en_EN")
+        
+        calendar.appearance.eventSelectionColor = .red
+        calendar.appearance.eventDefaultColor = .black
+        
+        calendar.appearance.selectionColor = .blue
+        calendar.appearance.todayColor = .brown
     }
     
     func setupHourlyWeatherView() {
-        OpenWeatherMapService(location: Location.seoul.coordinates).fetchWeatherData { [self] (result: Result<WeatherData, APIRequestError>) in
+        OpenWeatherMapService(location: Location.seoul.coordinates).fetchWeatherData {
+            [self] (result: Result<WeatherData, APIRequestError>) in
             switch result {
             case .success(let data):
                 drawHourlyWeatherView(by: data.hourly)
@@ -82,7 +71,11 @@ class MainViewController: UIViewController {
     func drawHourlyWeatherView(by data: [Hourly]) {
         for i in 0..<hourlyWeatherCount {
             DispatchQueue.main.async {
-                let subView = HourlyWeatherSubView.of(dt: Double(data[i].dt), temp: data[i].temp, iconId: data[i].weather[0].icon)
+                let subView = HourlyWeatherSubView.of(
+                    dt: Double(data[i].dt),
+                    temp: data[i].temp,
+                    iconId: data[i].weather[0].icon
+                )
                 self.hourlyWeatherView.addArrangedSubview(subView)
                 subView.snp.makeConstraints {
                     $0.width.equalTo(60)
@@ -90,7 +83,6 @@ class MainViewController: UIViewController {
             }
         }
     }
-    
 }
 
 // MARK: - FSCalendar DataSource & Delegate

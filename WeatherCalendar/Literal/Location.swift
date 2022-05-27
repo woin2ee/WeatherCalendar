@@ -18,5 +18,4 @@ enum Location {
             return (37.5683, 126.9778)
         }
     }
-    
 }
