@@ -96,7 +96,7 @@
                         <barButtonItem key="leftBarButtonItem" title="List" image="line.3.horizontal" catalog="system" id="BLe-Rj-uKp"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="iH3-Gb-WO0">
                             <connections>
-                                <segue destination="Iip-oi-EAF" kind="presentation" id="gEZ-aw-rij"/>
+                                <segue destination="Iip-oi-EAF" kind="presentation" identifier="AddTodoSegue" id="gEZ-aw-rij"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

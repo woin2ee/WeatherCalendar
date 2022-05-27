@@ -31,12 +31,18 @@ class MainViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard
-            let nc = segue.destination as? UINavigationController,
-            let addTodoItemVC = nc.topViewController as? AddTodoItemViewController
-        else { return }
-        addTodoItemVC.calendarDelegate = self
-        addTodoItemVC.selectedDate = calendar.selectedDate
+        guard let segueId = segue.identifier else { return }
+        
+        switch segueId {
+        case "AddTodoSegue":
+            let nc = segue.destination as? UINavigationController
+            let vc = nc?.topViewController as? AddTodoItemViewController
+            vc?.calendarDelegate = self
+            vc?.selectedDate = calendar.selectedDate
+        default:
+            debugPrint("해당 segueId 에 대한 처리가 없습니다.")
+            return
+        }
     }
     
     func setupAppearance() {
