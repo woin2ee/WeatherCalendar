@@ -8,7 +8,13 @@
 import Foundation
 
 protocol WeatherServiceProtocol {
+    var successCode: Range<Int> { get }
     
     func fetchWeatherData(completion: @escaping (Result<WeatherData, APIRequestError>) -> Void)
-    
+}
+
+extension WeatherServiceProtocol {
+    var successCode: Range<Int> {
+        (200..<300)
+    }
 }

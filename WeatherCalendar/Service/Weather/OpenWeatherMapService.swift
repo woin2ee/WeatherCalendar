@@ -26,7 +26,7 @@ struct OpenWeatherMapService: WeatherServiceProtocol {
                 return completion(.failure(.anyError))
             }
             
-            guard let response = urlResponse as? HTTPURLResponse, (200..<300).contains(response.statusCode) else {
+            guard let response = urlResponse as? HTTPURLResponse, successCode.contains(response.statusCode) else {
                 return completion(.failure(.failureStatusCode))
             }
             
