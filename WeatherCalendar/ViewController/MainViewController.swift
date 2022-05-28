@@ -12,7 +12,8 @@ import SnapKit
 class MainViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var hourlyWeatherView: UIStackView!
-    
+    @IBOutlet weak var pullDownMenuButton: UIBarButtonItem!
+
     let hourlyWeatherCount = 10
     
     weak var todoTableDelegate: TodoTableDelegate?
@@ -24,6 +25,7 @@ class MainViewController: UIViewController {
         calendar.delegate = self
         
         setupAppearance()
+        setupOptionButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +56,14 @@ class MainViewController: UIViewController {
         
         calendar.appearance.selectionColor = .blue
         calendar.appearance.todayColor = .brown
+    }
+    
+    func setupOptionButton() {
+        let settings = UIAction(title: "설정", image: UIImage(systemName: "gearshape.fill")) { _ in
+            print("settings")
+        }
+        
+        pullDownMenuButton.menu = UIMenu(children: [settings])
     }
     
     func setupHourlyWeatherView() {

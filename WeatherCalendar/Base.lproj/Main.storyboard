@@ -103,6 +103,7 @@
                     <connections>
                         <outlet property="calendar" destination="Ge1-7I-Lzj" id="Wm0-Tm-Ssq"/>
                         <outlet property="hourlyWeatherView" destination="dXp-ZU-EFY" id="Szl-Ed-AIz"/>
+                        <outlet property="pullDownMenuButton" destination="BLe-Rj-uKp" id="ch6-9S-9eE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
