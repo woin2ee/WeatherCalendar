@@ -31,6 +31,7 @@
 		E89E85D828042BD200DDAB0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E89E85D728042BD200DDAB0C /* Assets.xcassets */; };
 		E89E85DB28042BD300DDAB0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89E85D928042BD300DDAB0C /* LaunchScreen.storyboard */; };
 		E8A27C5C2842326B00057B85 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A27C5B2842326B00057B85 /* SettingsViewController.swift */; };
+		E8A27C5E284281F600057B85 /* HourlyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A27C5D284281F600057B85 /* HourlyWeatherView.swift */; };
 		E8BE9A41283880B700B187A0 /* AddTodoItemViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BE9A40283880B700B187A0 /* AddTodoItemViewControllerTests.swift */; };
 		E8DB2840282CC23200D98141 /* TodoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB283F282CC23200D98141 /* TodoService.swift */; };
 		E8DD19A6282BFD8D00D5FC78 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD19A5282BFD8D00D5FC78 /* Storage.swift */; };
@@ -76,6 +77,7 @@
 		E89E85DA28042BD300DDAB0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E89E85DC28042BD300DDAB0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8A27C5B2842326B00057B85 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E8A27C5D284281F600057B85 /* HourlyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherView.swift; sourceTree = "<group>"; };
 		E8BE9A3E283880B700B187A0 /* WeatherCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8BE9A40283880B700B187A0 /* AddTodoItemViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoItemViewControllerTests.swift; sourceTree = "<group>"; };
 		E8DB283F282CC23200D98141 /* TodoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoService.swift; sourceTree = "<group>"; };
@@ -121,12 +123,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		E8039454282D7C2800B9C310 /* CustomView */ = {
+		E8039454282D7C2800B9C310 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				E8FEDA4F282C0A090051E8B0 /* HourlyWeatherSubView.swift */,
+				E8A27C5D284281F600057B85 /* HourlyWeatherView.swift */,
 			);
-			path = CustomView;
+			path = View;
 			sourceTree = "<group>";
 		};
 		E848244F282E2A5300A180E3 /* ViewController */ = {
@@ -230,7 +233,7 @@
 				E89E85CE28042BD100DDAB0C /* AppDelegate.swift */,
 				E89E85D028042BD100DDAB0C /* SceneDelegate.swift */,
 				E848244F282E2A5300A180E3 /* ViewController */,
-				E8039454282D7C2800B9C310 /* CustomView */,
+				E8039454282D7C2800B9C310 /* View */,
 				E849A8EA283E69B6001BAA36 /* DateFormatter */,
 				E8DB283E282CB86D00D98141 /* Literal */,
 				E8DD19A4282BEF7C00D5FC78 /* Service */,
@@ -439,6 +442,7 @@
 				E849A8F7283E92D9001BAA36 /* APIRequestError.swift in Sources */,
 				E8DD19A6282BFD8D00D5FC78 /* Storage.swift in Sources */,
 				E8981EA128328C510000E5F0 /* AddTodoItemViewController.swift in Sources */,
+				E8A27C5E284281F600057B85 /* HourlyWeatherView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,10 +11,8 @@ import SnapKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
-    @IBOutlet weak var hourlyWeatherView: UIStackView!
+    @IBOutlet weak var hourlyWeatherView: HourlyWeatherView!
     @IBOutlet weak var pullDownMenuButton: UIBarButtonItem!
-
-    let hourlyWeatherCount = 10
     
     weak var todoTableDelegate: TodoTableDelegate?
     
@@ -30,7 +28,9 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupHourlyWeatherView()
+        super.viewWillAppear(animated)
+        
+        hourlyWeatherView.setupHourlyWeatherView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -71,34 +71,6 @@ class MainViewController: UIViewController {
     func setupBackBarButtonItem() {
         let backBarButtonItem = UIBarButtonItem(title: "back", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
-    }
-    
-    func setupHourlyWeatherView() {
-        OpenWeatherMapService(location: Location.seoul.coordinates).fetchWeatherData {
-            [self] (result: Result<WeatherData, APIRequestError>) in
-            switch result {
-            case .success(let data):
-                drawHourlyWeatherView(by: data.hourly)
-            case .failure(let error):
-                debugPrint(error.localizedDescription)
-            }
-        }
-    }
-    
-    func drawHourlyWeatherView(by data: [Hourly]) {
-        for i in 0..<hourlyWeatherCount {
-            DispatchQueue.main.async {
-                let subView = HourlyWeatherSubView.of(
-                    dt: Double(data[i].dt),
-                    temp: data[i].temp,
-                    iconId: data[i].weather[0].icon
-                )
-                self.hourlyWeatherView.addArrangedSubview(subView)
-                subView.snp.makeConstraints {
-                    $0.width.equalTo(60)
-                }
-            }
-        }
     }
 }
 
