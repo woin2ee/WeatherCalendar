@@ -30,6 +30,7 @@
 		E89E85D628042BD100DDAB0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89E85D428042BD100DDAB0C /* Main.storyboard */; };
 		E89E85D828042BD200DDAB0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E89E85D728042BD200DDAB0C /* Assets.xcassets */; };
 		E89E85DB28042BD300DDAB0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89E85D928042BD300DDAB0C /* LaunchScreen.storyboard */; };
+		E8A27C5C2842326B00057B85 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A27C5B2842326B00057B85 /* SettingsViewController.swift */; };
 		E8BE9A41283880B700B187A0 /* AddTodoItemViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BE9A40283880B700B187A0 /* AddTodoItemViewControllerTests.swift */; };
 		E8DB2840282CC23200D98141 /* TodoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB283F282CC23200D98141 /* TodoService.swift */; };
 		E8DD19A6282BFD8D00D5FC78 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD19A5282BFD8D00D5FC78 /* Storage.swift */; };
@@ -74,6 +75,7 @@
 		E89E85D728042BD200DDAB0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E89E85DA28042BD300DDAB0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E89E85DC28042BD300DDAB0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8A27C5B2842326B00057B85 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E8BE9A3E283880B700B187A0 /* WeatherCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8BE9A40283880B700B187A0 /* AddTodoItemViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoItemViewControllerTests.swift; sourceTree = "<group>"; };
 		E8DB283F282CC23200D98141 /* TodoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoService.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				E89E85D228042BD100DDAB0C /* MainViewController.swift */,
 				E848244D282E216400A180E3 /* TodoTableViewController.swift */,
 				E8981EA028328C510000E5F0 /* AddTodoItemViewController.swift */,
+				E8A27C5B2842326B00057B85 /* SettingsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				E8FEDA50282C0A090051E8B0 /* HourlyWeatherSubView.swift in Sources */,
 				E85B1066283F44C100C859F4 /* CalendarDelegate.swift in Sources */,
 				E8482452282E442B00A180E3 /* Todo.xcdatamodeld in Sources */,
+				E8A27C5C2842326B00057B85 /* SettingsViewController.swift in Sources */,
 				E89E85D128042BD100DDAB0C /* SceneDelegate.swift in Sources */,
 				E849A8EC283E6A00001BAA36 /* TodoDateFormatter.swift in Sources */,
 				E85B1068283F4F6C00C859F4 /* TodoTableDelegate.swift in Sources */,

@@ -24,8 +24,9 @@ class MainViewController: UIViewController {
         calendar.dataSource = self
         calendar.delegate = self
         
-        setupAppearance()
-        setupOptionButton()
+        setupCalendarAppearance()
+        setupPullDownMenuButton()
+        setupBackBarButtonItem()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +48,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    func setupAppearance() {
+    func setupCalendarAppearance() {
         calendar.appearance.weekdayTextColor = .black
         calendar.locale = Locale(identifier: "ko_KR")
         
@@ -58,12 +59,18 @@ class MainViewController: UIViewController {
         calendar.appearance.todayColor = .brown
     }
     
-    func setupOptionButton() {
+    func setupPullDownMenuButton() {
         let settings = UIAction(title: "설정", image: UIImage(systemName: "gearshape.fill")) { _ in
-            print("settings")
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsViewController") else { return }
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         
         pullDownMenuButton.menu = UIMenu(children: [settings])
+    }
+    
+    func setupBackBarButtonItem() {
+        let backBarButtonItem = UIBarButtonItem(title: "back", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     func setupHourlyWeatherView() {
