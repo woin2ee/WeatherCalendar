@@ -15,6 +15,8 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
         settingsTable.dataSource = self
         settingsTable.delegate = self
+        
+        
     }
 }
 
@@ -24,15 +26,20 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "SettingCell")
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingSwitchCell") as! SettingsTableViewSwitchCell
+
         var config = cell.defaultContentConfiguration()
-        config.text = indexPath.description
+        config.text = "\(indexPath)"
+        config.image = UIImage(systemName: "line.3.horizontal")
+        config.secondaryText = indexPath.description
         
         cell.contentConfiguration = config
+        cell.accessoryType = .disclosureIndicator
         
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        print(indexPath.description)
+    }
 }

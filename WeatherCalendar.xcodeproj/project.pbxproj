@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		78BB208475E68E58E8175D95 /* Pods_WeatherCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB4F553F0F66D2FDFC99A569 /* Pods_WeatherCalendar.framework */; };
+		E83432D328445C660007D23A /* SettingsTableViewSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83432D228445C660007D23A /* SettingsTableViewSwitchCell.swift */; };
 		E848244E282E216400A180E3 /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848244D282E216400A180E3 /* TodoTableViewController.swift */; };
 		E8482452282E442B00A180E3 /* Todo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8482450282E442B00A180E3 /* Todo.xcdatamodeld */; };
 		E849A8EC283E6A00001BAA36 /* TodoDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E849A8EB283E6A00001BAA36 /* TodoDateFormatter.swift */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		0E69427662F97E0EF4FA598B /* Pods-WeatherCalendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherCalendar.debug.xcconfig"; path = "Target Support Files/Pods-WeatherCalendar/Pods-WeatherCalendar.debug.xcconfig"; sourceTree = "<group>"; };
 		A14227019291EADF1371BC69 /* Pods-WeatherCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherCalendar.release.xcconfig"; path = "Target Support Files/Pods-WeatherCalendar/Pods-WeatherCalendar.release.xcconfig"; sourceTree = "<group>"; };
+		E83432D228445C660007D23A /* SettingsTableViewSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewSwitchCell.swift; sourceTree = "<group>"; };
 		E848244D282E216400A180E3 /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
 		E8482451282E442B00A180E3 /* Todo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Todo.xcdatamodel; sourceTree = "<group>"; };
 		E849A8EB283E6A00001BAA36 /* TodoDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDateFormatter.swift; sourceTree = "<group>"; };
@@ -126,10 +128,27 @@
 		E8039454282D7C2800B9C310 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E83432D4284466D60007D23A /* HourlyWeatherView */,
+				E83432D128445C3C0007D23A /* TableViewCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E83432D128445C3C0007D23A /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E83432D228445C660007D23A /* SettingsTableViewSwitchCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		E83432D4284466D60007D23A /* HourlyWeatherView */ = {
+			isa = PBXGroup;
+			children = (
 				E8FEDA4F282C0A090051E8B0 /* HourlyWeatherSubView.swift */,
 				E8A27C5D284281F600057B85 /* HourlyWeatherView.swift */,
 			);
-			path = View;
+			path = HourlyWeatherView;
 			sourceTree = "<group>";
 		};
 		E848244F282E2A5300A180E3 /* ViewController */ = {
@@ -422,6 +441,7 @@
 			files = (
 				E89E85D328042BD100DDAB0C /* MainViewController.swift in Sources */,
 				E848244E282E216400A180E3 /* TodoTableViewController.swift in Sources */,
+				E83432D328445C660007D23A /* SettingsTableViewSwitchCell.swift in Sources */,
 				E87157C528411D0C007D1507 /* TodoItem.swift in Sources */,
 				E849A8EE283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift in Sources */,
 				E849A8F5283E9213001BAA36 /* WeatherServiceProtocol.swift in Sources */,
