@@ -26,32 +26,40 @@ class ViewController: UIViewController {
         calendar.locale = Locale(identifier: "ko_KR")
 //        calendar.locale = Locale(identifier: "en_EN")
         
-        
-        
-        
     }
     
     private func initAppearance(with ca: FSCalendarAppearance) {
-        ca.headerTitleColor = .red
-        ca.weekdayTextColor = .red
+        
+        //캘린더 상단부분
+        // 상단 월 표시 형태
+        ca.headerDateFormat = "M월"
+        // 상단 월 양옆에 흐린 글자
+        ca.headerMinimumDissolvedAlpha = 0.0
+        // 상단 월 글자 색
+        ca.headerTitleColor = UIColor(red: 100/255, green: 60/255, blue: 253/255, alpha: 1)
+        // 상단 요일 글자 색
+        ca.weekdayTextColor = .black
+        
+        
+        // 캘린더 안쪽 부분
         // 캘린더 배경색
         calendar.backgroundColor = UIColor(red:241/255, green: 240/255, blue: 255/255, alpha: 1)
-        
-        ca.eventSelectionColor = .green
-        ca.eventDefaultColor = .yellow
-        
+        // 주말 일 글자 색
+        ca.titleWeekendColor = .red
         // 선택한 날짜 색
         ca.selectionColor = UIColor(red: 100/255, green: 60/255, blue: 253/255, alpha: 0.5)
+        // 선택된 날짜 모서리
+        ca.borderRadius = 0.5
         // 오늘 날짜 색
         ca.todayColor = UIColor(red: 100/255, green: 60/255, blue: 230/255, alpha: 1)
-        
+        // 오늘 날짜가 선택됐을 때 색
         ca.todaySelectionColor = .red
+       
         
-        ca.headerDateFormat = "M월"
+        //ca.eventSelectionColor = .green
+        //ca.eventDefaultColor = .yellow
         
-        ca.headerMinimumDissolvedAlpha = 0.0
         
-        ca.borderRadius = 0
     }
     
     private func initHourlyWeatherView() {
