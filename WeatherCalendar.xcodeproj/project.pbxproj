@@ -213,6 +213,7 @@
 			children = (
 				E87157C428411D0C007D1507 /* TodoItem.swift */,
 				E87157C628412032007D1507 /* TodoList.swift */,
+				E8482450282E442B00A180E3 /* Todo.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,6 +225,25 @@
 				E87157DC28414C63007D1507 /* StubTodoTableViewController.swift */,
 			);
 			path = TodoTableViewControllerTest;
+			sourceTree = "<group>";
+		};
+		E87390D4284E44F400FF79E3 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				E89E85CE28042BD100DDAB0C /* AppDelegate.swift */,
+				E89E85D028042BD100DDAB0C /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		E87390D5284E49AB00FF79E3 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				E89E85D728042BD200DDAB0C /* Assets.xcassets */,
+				E89E85D928042BD300DDAB0C /* LaunchScreen.storyboard */,
+				E8DB283E282CB86D00D98141 /* Literal */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		E89E85C228042BD100DDAB0C = {
@@ -249,16 +269,13 @@
 		E89E85CD28042BD100DDAB0C /* WeatherCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				E89E85CE28042BD100DDAB0C /* AppDelegate.swift */,
-				E89E85D028042BD100DDAB0C /* SceneDelegate.swift */,
+				E87390D4284E44F400FF79E3 /* Application */,
 				E848244F282E2A5300A180E3 /* ViewController */,
 				E8039454282D7C2800B9C310 /* View */,
 				E849A8EA283E69B6001BAA36 /* DateFormatter */,
-				E8DB283E282CB86D00D98141 /* Literal */,
 				E8DD19A4282BEF7C00D5FC78 /* Service */,
+				E87390D5284E49AB00FF79E3 /* Resource */,
 				E89E85D428042BD100DDAB0C /* Main.storyboard */,
-				E89E85D728042BD200DDAB0C /* Assets.xcassets */,
-				E89E85D928042BD300DDAB0C /* LaunchScreen.storyboard */,
 				E89E85DC28042BD300DDAB0C /* Info.plist */,
 			);
 			path = WeatherCalendar;
@@ -289,7 +306,6 @@
 				E87157D328412A37007D1507 /* CoreDataServiceProtocol.swift */,
 				E849A8EF283E6E25001BAA36 /* Weather */,
 				E849A8F9283E9445001BAA36 /* Todo */,
-				E8482450282E442B00A180E3 /* Todo.xcdatamodeld */,
 			);
 			path = Service;
 			sourceTree = "<group>";
