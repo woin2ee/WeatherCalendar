@@ -134,8 +134,11 @@
 		E8039454282D7C2800B9C310 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				E87390F8284F0ECD00FF79E3 /* Scenes */,
-				E85B1064283F44AE00C859F4 /* DelegateProtocol */,
+				E89E85D428042BD100DDAB0C /* Main.storyboard */,
+				E87390F5284F0E3400FF79E3 /* MainScene */,
+				E87390F6284F0E5200FF79E3 /* AddTodoItemScene */,
+				E87390F7284F0EA000FF79E3 /* SettingsScene */,
+				E85B1064283F44AE00C859F4 /* Utils */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -157,13 +160,12 @@
 			path = HourlyWeatherView;
 			sourceTree = "<group>";
 		};
-		E85B1064283F44AE00C859F4 /* DelegateProtocol */ = {
+		E85B1064283F44AE00C859F4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				E85B1065283F44C100C859F4 /* CalendarDelegate.swift */,
-				E85B1067283F4F6C00C859F4 /* TodoTableDelegate.swift */,
+				E87390FA284F14F700FF79E3 /* DelegateProtocol */,
 			);
-			path = DelegateProtocol;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		E87157DE284152FF007D1507 /* TodoTableViewControllerTest */ = {
@@ -338,23 +340,21 @@
 			path = SettingsScene;
 			sourceTree = "<group>";
 		};
-		E87390F8284F0ECD00FF79E3 /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				E89E85D428042BD100DDAB0C /* Main.storyboard */,
-				E87390F5284F0E3400FF79E3 /* MainScene */,
-				E87390F6284F0E5200FF79E3 /* AddTodoItemScene */,
-				E87390F7284F0EA000FF79E3 /* SettingsScene */,
-			);
-			path = Scenes;
-			sourceTree = "<group>";
-		};
 		E87390F9284F0EF100FF79E3 /* TodoTableView */ = {
 			isa = PBXGroup;
 			children = (
 				E848244D282E216400A180E3 /* TodoTableViewController.swift */,
 			);
 			path = TodoTableView;
+			sourceTree = "<group>";
+		};
+		E87390FA284F14F700FF79E3 /* DelegateProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				E85B1065283F44C100C859F4 /* CalendarDelegate.swift */,
+				E85B1067283F4F6C00C859F4 /* TodoTableDelegate.swift */,
+			);
+			path = DelegateProtocol;
 			sourceTree = "<group>";
 		};
 		E89E85C228042BD100DDAB0C = {
