@@ -208,7 +208,7 @@
 		E87390D9284E574F00FF79E3 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				E87390F3284E8E1500FF79E3 /* Common */,
+				E87390F3284E8E1500FF79E3 /* Utils */,
 				E87390DF284E57AE00FF79E3 /* DTO */,
 				E87390DE284E579500FF79E3 /* Service */,
 			);
@@ -303,12 +303,12 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
-		E87390F3284E8E1500FF79E3 /* Common */ = {
+		E87390F3284E8E1500FF79E3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				E849A8ED283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift */,
 			);
-			path = Common;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		E87390F5284F0E3400FF79E3 /* MainScene */ = {
