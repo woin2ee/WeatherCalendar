@@ -83,7 +83,7 @@
 		E89E85D528042BD100DDAB0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E89E85D728042BD200DDAB0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E89E85DA28042BD300DDAB0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E89E85DC28042BD300DDAB0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E89E85DC28042BD300DDAB0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = WeatherCalendar/Application/Info.plist; sourceTree = SOURCE_ROOT; };
 		E8A27C5B2842326B00057B85 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E8A27C5D284281F600057B85 /* HourlyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherView.swift; sourceTree = "<group>"; };
 		E8BE9A3E283880B700B187A0 /* WeatherCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,21 +131,21 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		E8039454282D7C2800B9C310 /* View */ = {
+		E8039454282D7C2800B9C310 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				E83432D4284466D60007D23A /* HourlyWeatherView */,
-				E83432D128445C3C0007D23A /* TableViewCell */,
+				E87390F8284F0ECD00FF79E3 /* Scenes */,
+				E85B1064283F44AE00C859F4 /* DelegateProtocol */,
 			);
-			path = View;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
-		E83432D128445C3C0007D23A /* TableViewCell */ = {
+		E83432D128445C3C0007D23A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				E83432D228445C660007D23A /* SettingsTableViewSwitchCell.swift */,
 			);
-			path = TableViewCell;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		E83432D4284466D60007D23A /* HourlyWeatherView */ = {
@@ -155,18 +155,6 @@
 				E8A27C5D284281F600057B85 /* HourlyWeatherView.swift */,
 			);
 			path = HourlyWeatherView;
-			sourceTree = "<group>";
-		};
-		E848244F282E2A5300A180E3 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E85B1064283F44AE00C859F4 /* DelegateProtocol */,
-				E89E85D228042BD100DDAB0C /* MainViewController.swift */,
-				E848244D282E216400A180E3 /* TodoTableViewController.swift */,
-				E8981EA028328C510000E5F0 /* AddTodoItemViewController.swift */,
-				E8A27C5B2842326B00057B85 /* SettingsViewController.swift */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		E85B1064283F44AE00C859F4 /* DelegateProtocol */ = {
@@ -192,6 +180,7 @@
 			children = (
 				E89E85CE28042BD100DDAB0C /* AppDelegate.swift */,
 				E89E85D028042BD100DDAB0C /* SceneDelegate.swift */,
+				E89E85DC28042BD300DDAB0C /* Info.plist */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -322,6 +311,52 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		E87390F5284F0E3400FF79E3 /* MainScene */ = {
+			isa = PBXGroup;
+			children = (
+				E89E85D228042BD100DDAB0C /* MainViewController.swift */,
+				E83432D4284466D60007D23A /* HourlyWeatherView */,
+				E87390F9284F0EF100FF79E3 /* TodoTableView */,
+			);
+			path = MainScene;
+			sourceTree = "<group>";
+		};
+		E87390F6284F0E5200FF79E3 /* AddTodoItemScene */ = {
+			isa = PBXGroup;
+			children = (
+				E8981EA028328C510000E5F0 /* AddTodoItemViewController.swift */,
+			);
+			path = AddTodoItemScene;
+			sourceTree = "<group>";
+		};
+		E87390F7284F0EA000FF79E3 /* SettingsScene */ = {
+			isa = PBXGroup;
+			children = (
+				E8A27C5B2842326B00057B85 /* SettingsViewController.swift */,
+				E83432D128445C3C0007D23A /* Cell */,
+			);
+			path = SettingsScene;
+			sourceTree = "<group>";
+		};
+		E87390F8284F0ECD00FF79E3 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				E89E85D428042BD100DDAB0C /* Main.storyboard */,
+				E87390F5284F0E3400FF79E3 /* MainScene */,
+				E87390F6284F0E5200FF79E3 /* AddTodoItemScene */,
+				E87390F7284F0EA000FF79E3 /* SettingsScene */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		E87390F9284F0EF100FF79E3 /* TodoTableView */ = {
+			isa = PBXGroup;
+			children = (
+				E848244D282E216400A180E3 /* TodoTableViewController.swift */,
+			);
+			path = TodoTableView;
+			sourceTree = "<group>";
+		};
 		E89E85C228042BD100DDAB0C = {
 			isa = PBXGroup;
 			children = (
@@ -346,12 +381,9 @@
 			isa = PBXGroup;
 			children = (
 				E87390D4284E44F400FF79E3 /* Application */,
-				E848244F282E2A5300A180E3 /* ViewController */,
-				E8039454282D7C2800B9C310 /* View */,
+				E8039454282D7C2800B9C310 /* Presentation */,
 				E87390D8284E573400FF79E3 /* Model */,
 				E87390D5284E49AB00FF79E3 /* Resource */,
-				E89E85D428042BD100DDAB0C /* Main.storyboard */,
-				E89E85DC28042BD300DDAB0C /* Info.plist */,
 			);
 			path = WeatherCalendar;
 			sourceTree = "<group>";
@@ -714,7 +746,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2AVC8X7323;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherCalendar/Info.plist;
+				INFOPLIST_FILE = WeatherCalendar/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -745,7 +777,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2AVC8X7323;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherCalendar/Info.plist;
+				INFOPLIST_FILE = WeatherCalendar/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
