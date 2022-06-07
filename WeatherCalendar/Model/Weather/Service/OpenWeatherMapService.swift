@@ -8,7 +8,7 @@
 import Foundation
 
 // https://openweathermap.org
-struct OpenWeatherMapService: WeatherServiceProtocol {
+struct OpenWeatherMapService: WeatherService {
     let location: Location.Coord
     
     func fetchWeatherData(completion: @escaping (Result<WeatherData, APIRequestError>) -> Void) {

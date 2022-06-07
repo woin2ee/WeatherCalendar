@@ -8,11 +8,18 @@
 import UIKit
 
 class HourlyWeatherView: UIStackView {
+    let weatherService: WeatherService
+    
     let hourlyWeatherCount = 10
+    
+    required init(coder: NSCoder) {
+        weatherService = OpenWeatherMapService(location: Location.seoul.coordinates)
+        super.init(coder: coder)
+    }
     
     func setupHourlyWeatherView() {
         removeFullyAllArrangedSubviews()
-        OpenWeatherMapService(location: Location.seoul.coordinates).fetchWeatherData {
+        weatherService.fetchWeatherData {
             [self] (result: Result<WeatherData, APIRequestError>) in
             switch result {
             case .success(let data):

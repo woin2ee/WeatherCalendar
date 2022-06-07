@@ -1,5 +1,5 @@
 //
-//  CoreDataServiceProtocol.swift
+//  CoreDataSupport.swift
 //  WeatherCalendar
 //
 //  Created by Jaewon on 2022/05/28.
@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-protocol CoreDataServiceProtocol {
+protocol CoreDataSupport {
     var persistentContainer: NSPersistentContainer { get }
     var context: NSManagedObjectContext { get }
     var entityName: String { get }
@@ -17,7 +17,7 @@ protocol CoreDataServiceProtocol {
     func saveContext()
 }
 
-extension CoreDataServiceProtocol {
+extension CoreDataSupport {
     var context: NSManagedObjectContext {
         persistentContainer.viewContext
     }

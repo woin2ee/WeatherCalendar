@@ -10,17 +10,16 @@ import UIKit
 class TodoTableViewController: UIViewController {
     @IBOutlet weak var todoTable: UITableView!
     
-    var todoList = TodoList(date: TodoDateFormatter().string(from: Date()), list: [""])
+    var todoList = [TodoItem]()
     
     weak var calendarDelegate: CalendarDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         todoTable.dataSource = self
         todoTable.delegate = self
         
-        reloadTodoList(selected: TodoDateFormatter().string(from: Date()))
+        reloadTodoList(selected: Date())
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,8 +29,8 @@ class TodoTableViewController: UIViewController {
         (self.parent as? MainViewController)?.todoTableDelegate = self
     }
     
-    func reloadTodoList(selected date: String) {
-        todoList = TodoList(date: date, list: TodoService().fetchList(by: date))
+    func reloadTodoList(selected date: Date?) {
+        todoList = TodoService().fetchList(by: date ?? Date())
         todoTable.reloadSections(IndexSet(0...0), with: .none)
     }
 }
@@ -39,14 +38,14 @@ class TodoTableViewController: UIViewController {
 // MARK: - UITableView DataSource & Delegate
 extension TodoTableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.todoList.count
+        return todoList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "myCell")
 
         var config = cell.defaultContentConfiguration()
-        config.text = self.todoList[indexPath.row]
+        config.text = todoList[indexPath.row].content
 
         cell.contentConfiguration = config
 
@@ -55,9 +54,10 @@ extension TodoTableViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "삭제") { [self] in
-            TodoService().delete(date: todoList.date, content: todoList[indexPath.row])
-            reloadTodoList(selected: todoList.date)
-            if todoList.list.isEmpty {
+            let targetItem = todoList[indexPath.row]
+            TodoService().delete(item: targetItem)
+            reloadTodoList(selected: targetItem.date)
+            if todoList.isEmpty {
                 calendarDelegate?.updateEventDot()
             }
             $2(true)
@@ -70,8 +70,7 @@ extension TodoTableViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension TodoTableViewController: TodoTableDelegate {
     func loadTodoList(selected date: Date) {
-        let formattedDate = TodoDateFormatter().string(from: date)
-        reloadTodoList(selected: formattedDate)
+        reloadTodoList(selected: date)
     }
     
     func scrollToBottom() {

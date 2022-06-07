@@ -83,8 +83,9 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         let todo = TodoService().fetchAll()
-        let formattedDate = TodoDateFormatter().string(from: date)
-        return todo[formattedDate]?.count ?? 0 > 0 ? 1 : 0
+        return todo.contains {
+            $0.date == date
+        } ? 1 : 0
     }
 }
 
