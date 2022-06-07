@@ -16,6 +16,14 @@ class MainViewController: UIViewController {
     
     weak var todoTableDelegate: TodoTableDelegate?
     
+    var titleFormatter: DateFormatter {
+        let fm = DateFormatter()
+        fm.locale = Locale(identifier: "ko_KR")
+        fm.timeZone = TimeZone(abbreviation: "KST")
+        fm.dateFormat = "yyyy년 M월"
+        return fm
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         calendar.dataSource = self
@@ -31,6 +39,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hourlyWeatherView.setupHourlyWeatherView()
+        updateNavigationTitle()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -72,6 +81,11 @@ class MainViewController: UIViewController {
         let backBarButtonItem = UIBarButtonItem(title: "back", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }
+    
+    func updateNavigationTitle() {
+        let currentDate = titleFormatter.string(from: calendar.currentPage)
+        self.navigationItem.title = currentDate
+    }
 }
 
 // MARK: - FSCalendar DataSource & Delegate
@@ -86,6 +100,10 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
         return todo.contains {
             $0.date == date
         } ? 1 : 0
+    }
+    
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        updateNavigationTitle()
     }
 }
 
