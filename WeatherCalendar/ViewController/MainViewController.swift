@@ -18,9 +18,10 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         calendar.dataSource = self
         calendar.delegate = self
+        
+        todoTableDelegate = self.children.first as? TodoTableViewController
         
         setupCalendarAppearance()
         setupPullDownMenuButton()
@@ -29,7 +30,6 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         hourlyWeatherView.setupHourlyWeatherView()
     }
     

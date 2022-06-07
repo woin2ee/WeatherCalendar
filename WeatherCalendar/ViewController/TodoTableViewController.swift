@@ -23,10 +23,7 @@ class TodoTableViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
         calendarDelegate = self.parent as? MainViewController
-        (self.parent as? MainViewController)?.todoTableDelegate = self
     }
     
     func reloadTodoList(selected date: Date?) {

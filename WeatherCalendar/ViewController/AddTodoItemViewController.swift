@@ -10,12 +10,13 @@ import UIKit
 class AddTodoItemViewController: UIViewController {
     @IBOutlet weak var content: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
+    
     var selectedDate: Date?
+    
     weak var calendarDelegate: CalendarDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         initDatePicker()
     }
 
