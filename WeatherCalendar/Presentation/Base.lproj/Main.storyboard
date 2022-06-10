@@ -86,19 +86,34 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fz6-p5-hdc">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fz6-p5-hdc">
                                 <rect key="frame" x="0.0" y="93" width="414" height="90"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="dXp-ZU-EFY" customClass="HourlyWeatherView" customModule="WeatherCalendar" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="10" width="485" height="70"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="dXp-ZU-EFY" customClass="HourlyWeatherView" customModule="WeatherCalendar" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="10" width="60" height="70"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OHf-nr-Ozv" userLabel="ExampleSubView">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="70"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="mCA-An-KPa"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="OHf-nr-Ozv" firstAttribute="top" secondItem="dXp-ZU-EFY" secondAttribute="top" id="7JQ-FN-M1f"/>
+                                            <constraint firstAttribute="bottom" secondItem="OHf-nr-Ozv" secondAttribute="bottom" id="RDH-r7-4xI"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="45V-OP-xrm"/>
+                                    <constraint firstItem="dXp-ZU-EFY" firstAttribute="top" secondItem="FHi-9V-sYu" secondAttribute="top" constant="10" id="Br5-oW-CpJ"/>
                                     <constraint firstItem="dXp-ZU-EFY" firstAttribute="top" secondItem="V74-3p-4C0" secondAttribute="top" constant="10" id="EGB-eK-9yH"/>
                                     <constraint firstItem="dXp-ZU-EFY" firstAttribute="trailing" secondItem="FHi-9V-sYu" secondAttribute="trailing" constant="-5" id="Gni-4I-w4l"/>
                                     <constraint firstItem="V74-3p-4C0" firstAttribute="bottom" secondItem="dXp-ZU-EFY" secondAttribute="bottom" constant="10" id="cem-ug-r3b"/>
+                                    <constraint firstItem="dXp-ZU-EFY" firstAttribute="bottom" secondItem="FHi-9V-sYu" secondAttribute="bottom" id="hZk-5v-H34"/>
                                     <constraint firstItem="dXp-ZU-EFY" firstAttribute="leading" secondItem="FHi-9V-sYu" secondAttribute="leading" constant="5" id="qT2-5W-opW"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="FHi-9V-sYu"/>
