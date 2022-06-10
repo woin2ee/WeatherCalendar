@@ -34,6 +34,8 @@ class MainViewController: UIViewController {
         setupCalendarAppearance()
         setupPullDownMenuButton()
         setupBackBarButtonItem()
+        
+        selectToday()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,6 +83,12 @@ class MainViewController: UIViewController {
     func setupBackBarButtonItem() {
         let backBarButtonItem = UIBarButtonItem(title: "back", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
+    }
+    
+    func selectToday() {
+        guard let today = calendar.today else { return }
+        calendar(calendar, didSelect: today, at: .current)
+        calendar.select(calendar.today)
     }
     
     func updateNavigationTitle() {
