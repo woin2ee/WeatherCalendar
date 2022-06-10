@@ -23,7 +23,7 @@ class HourlyWeatherView: UIStackView {
         
         removeFullyAllArrangedSubviews()
         weatherService.fetchHourlyWeatherData {
-            [self] (result: Result<[HourlyWeatherDTO], APIRequestError>) in
+            [self] (result: Result<[Hourly], APIRequestError>) in
             switch result {
             case .success(let data):
                 setSubViews(by: data)
@@ -45,7 +45,7 @@ class HourlyWeatherView: UIStackView {
         }
     }
     
-    func setSubViews(by data: [HourlyWeatherDTO]) {
+    func setSubViews(by data: [Hourly]) {
         for i in 0..<displayingCount {
             DispatchQueue.main.async {
                 let subView = HourlyWeatherSubView.of(

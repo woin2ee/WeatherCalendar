@@ -11,7 +11,7 @@ import Foundation
 struct OpenWeatherMapService: WeatherService {
     let location: Location.Coord
     
-    func fetchHourlyWeatherData(completion: @escaping (Result<[HourlyWeatherDTO], APIRequestError>) -> Void) {
+    func fetchHourlyWeatherData(completion: @escaping (Result<[Hourly], APIRequestError>) -> Void) {
         // URL 형식 참조: https://openweathermap.org/api/one-call-api
         guard let url = URL(
             string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(location.lat)&lon=\(location.lon)&exclude=minutely,alerts&appid=\(Storage.API_KEY)"
@@ -37,7 +37,7 @@ struct OpenWeatherMapService: WeatherService {
                 return completion(.failure(.decodeError))
             }
             
-            completion(.success(decodedData.hourly.map { $0.toDTO() }))
+            completion(.success(decodedData.hourly))
         }
         
         task.resume()

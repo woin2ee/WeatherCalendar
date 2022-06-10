@@ -10,7 +10,7 @@ import Foundation
 protocol WeatherService {
     var successCode: Range<Int> { get }
     
-    func fetchHourlyWeatherData(completion: @escaping (Result<[HourlyWeatherDTO], APIRequestError>) -> Void)
+    func fetchHourlyWeatherData(completion: @escaping (Result<[Hourly], APIRequestError>) -> Void)
 }
 
 extension WeatherService {

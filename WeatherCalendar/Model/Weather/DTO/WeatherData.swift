@@ -26,8 +26,23 @@ struct Current: Codable {
 
 struct Hourly: Codable {
     let dt: Int
-    let temp: Double
+    let kelvin: Double
     let weather: [Weather]
+    
+    enum CodingKeys: String, CodingKey {
+        case dt
+        case kelvin = "temp"
+        case weather
+    }
+    
+    var date: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter.string(from: Date(timeIntervalSince1970: Double(dt)))
+    }
+    var iconImg: UIImage? {
+        return UIImage(named: weather.first?.icon ?? "")
+    }
 }
 
 struct Daily: Codable {
@@ -40,17 +55,4 @@ struct Weather: Codable {
     let main: String
     let description: String
     let icon: String
-}
-
-extension Hourly {
-    func toDTO() -> HourlyWeatherDTO {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        
-        return .init(
-            date: formatter.string(from: Date(timeIntervalSince1970: Double(dt))),
-            kelvin: temp,
-            iconImg: UIImage(named: weather.first?.icon ?? "")
-        )
-    }
 }
