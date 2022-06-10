@@ -9,19 +9,17 @@ import UIKit
 import SnapKit
 
 struct HourlyWeatherSubView {
-    static func of(dt: Double, temp kelvin: Double, iconId: String) -> UIView {
+    static func of(date: String, kelvin: Double, iconImg: UIImage?) -> UIView {
         let hourLabel: UILabel = {
             let lbl = UILabel()
             lbl.textAlignment = .center
-            let now = Date(timeIntervalSince1970: dt)
-            lbl.text = HourlyWeatherDateFormatter().string(from: now)
+            lbl.text = date
             return lbl
         }()
         let weatherIcon: UIImageView = {
             let icon = UIImageView()
             icon.contentMode = .scaleAspectFit
-            let img = UIImage(named: iconId)
-            icon.image = img
+            icon.image = iconImg
             return icon
         }()
         let temperatureLabel: UILabel = {

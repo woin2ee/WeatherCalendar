@@ -10,35 +10,34 @@ import UIKit
 class HourlyWeatherView: UIStackView {
     let weatherService: WeatherService
     
-    let hourlyWeatherCount = 10
+    let displayingCount = 20
     
     required init(coder: NSCoder) {
         weatherService = OpenWeatherMapService(location: Location.seoul.coordinates)
         super.init(coder: coder)
     }
     
-    func setupHourlyWeatherView() {
+    func updateView() {
         removeFullyAllArrangedSubviews()
-        weatherService.fetchWeatherData {
-            [self] (result: Result<WeatherData, APIRequestError>) in
+        weatherService.fetchHourlyWeatherData {
+            [self] (result: Result<[HourlyWeatherDTO], APIRequestError>) in
             switch result {
             case .success(let data):
-                drawHourlyWeatherView(by: data.hourly)
+                setSubViews(by: data)
             case .failure(let error):
                 debugPrint(error.localizedDescription)
             }
         }
     }
     
-    func drawHourlyWeatherView(by data: [Hourly]) {
-        for i in 0..<hourlyWeatherCount {
+    func setSubViews(by data: [HourlyWeatherDTO]) {
+        for i in 0..<displayingCount {
             DispatchQueue.main.async {
                 let subView = HourlyWeatherSubView.of(
-                    dt: Double(data[i].dt),
-                    temp: data[i].temp,
-                    iconId: data[i].weather[0].icon
+                    date: data[i].date,
+                    kelvin: data[i].kelvin,
+                    iconImg: data[i].iconImg
                 )
-                
                 self.addArrangedSubview(subView)
                 
                 subView.snp.makeConstraints {

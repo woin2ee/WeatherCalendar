@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct WeatherData: Codable {
     let lat: Double
@@ -39,4 +40,17 @@ struct Weather: Codable {
     let main: String
     let description: String
     let icon: String
+}
+
+extension Hourly {
+    func toDTO() -> HourlyWeatherDTO {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        
+        return .init(
+            date: formatter.string(from: Date(timeIntervalSince1970: Double(dt))),
+            kelvin: temp,
+            iconImg: UIImage(named: weather.first?.icon ?? "")
+        )
+    }
 }

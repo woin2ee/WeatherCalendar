@@ -11,13 +11,13 @@
 		E83432D328445C660007D23A /* SettingsTableViewSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83432D228445C660007D23A /* SettingsTableViewSwitchCell.swift */; };
 		E848244E282E216400A180E3 /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E848244D282E216400A180E3 /* TodoTableViewController.swift */; };
 		E8482452282E442B00A180E3 /* Todo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8482450282E442B00A180E3 /* Todo.xcdatamodeld */; };
-		E849A8EE283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E849A8ED283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift */; };
 		E849A8F3283E74F8001BAA36 /* OpenWeatherMapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E849A8F2283E74F8001BAA36 /* OpenWeatherMapService.swift */; };
 		E849A8F5283E9213001BAA36 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E849A8F4283E9212001BAA36 /* WeatherService.swift */; };
 		E849A8F7283E92D9001BAA36 /* APIRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E849A8F6283E92D9001BAA36 /* APIRequestError.swift */; };
+		E85A55E42852F2C4007FB2AD /* HourlyWeatherDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85A55E32852F2C4007FB2AD /* HourlyWeatherDTO.swift */; };
 		E85B1066283F44C100C859F4 /* CalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B1065283F44C100C859F4 /* CalendarDelegate.swift */; };
 		E85B1068283F4F6C00C859F4 /* TodoTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B1067283F4F6C00C859F4 /* TodoTableDelegate.swift */; };
-		E86E1761282984C400D327B7 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E1760282984C400D327B7 /* WeatherData.swift */; };
+		E86E1761282984C400D327B7 /* WeatherData+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E1760282984C400D327B7 /* WeatherData+Mapping.swift */; };
 		E87157C528411D0C007D1507 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87157C428411D0C007D1507 /* TodoItem.swift */; };
 		E87157D428412A37007D1507 /* CoreDataSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87157D328412A37007D1507 /* CoreDataSupport.swift */; };
 		E87157DB28414C4F007D1507 /* TodoTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87157DA28414C4F007D1507 /* TodoTableViewControllerTests.swift */; };
@@ -59,13 +59,13 @@
 		E83432D228445C660007D23A /* SettingsTableViewSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewSwitchCell.swift; sourceTree = "<group>"; };
 		E848244D282E216400A180E3 /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
 		E8482451282E442B00A180E3 /* Todo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Todo.xcdatamodel; sourceTree = "<group>"; };
-		E849A8ED283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherDateFormatter.swift; sourceTree = "<group>"; };
 		E849A8F2283E74F8001BAA36 /* OpenWeatherMapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapService.swift; sourceTree = "<group>"; };
 		E849A8F4283E9212001BAA36 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		E849A8F6283E92D9001BAA36 /* APIRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestError.swift; sourceTree = "<group>"; };
+		E85A55E32852F2C4007FB2AD /* HourlyWeatherDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherDTO.swift; sourceTree = "<group>"; };
 		E85B1065283F44C100C859F4 /* CalendarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDelegate.swift; sourceTree = "<group>"; };
 		E85B1067283F4F6C00C859F4 /* TodoTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableDelegate.swift; sourceTree = "<group>"; };
-		E86E1760282984C400D327B7 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		E86E1760282984C400D327B7 /* WeatherData+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherData+Mapping.swift"; sourceTree = "<group>"; };
 		E87157C428411D0C007D1507 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		E87157D328412A37007D1507 /* CoreDataSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSupport.swift; sourceTree = "<group>"; };
 		E87157DA28414C4F007D1507 /* TodoTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewControllerTests.swift; sourceTree = "<group>"; };
@@ -154,10 +154,18 @@
 		E83432D4284466D60007D23A /* HourlyWeatherView */ = {
 			isa = PBXGroup;
 			children = (
-				E8FEDA4F282C0A090051E8B0 /* HourlyWeatherSubView.swift */,
 				E8A27C5D284281F600057B85 /* HourlyWeatherView.swift */,
+				E8FEDA4F282C0A090051E8B0 /* HourlyWeatherSubView.swift */,
 			);
 			path = HourlyWeatherView;
+			sourceTree = "<group>";
+		};
+		E85A55E22852F11F007FB2AD /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				E85A55E32852F2C4007FB2AD /* HourlyWeatherDTO.swift */,
+			);
+			path = DTO;
 			sourceTree = "<group>";
 		};
 		E85B1064283F44AE00C859F4 /* Utils */ = {
@@ -210,8 +218,8 @@
 		E87390D9284E574F00FF79E3 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				E87390F3284E8E1500FF79E3 /* Utils */,
-				E87390DF284E57AE00FF79E3 /* DTO */,
+				E87390DF284E57AE00FF79E3 /* Entity */,
+				E85A55E22852F11F007FB2AD /* DTO */,
 				E87390DE284E579500FF79E3 /* Service */,
 			);
 			path = Weather;
@@ -262,12 +270,12 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		E87390DF284E57AE00FF79E3 /* DTO */ = {
+		E87390DF284E57AE00FF79E3 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				E86E1760282984C400D327B7 /* WeatherData.swift */,
+				E86E1760282984C400D327B7 /* WeatherData+Mapping.swift */,
 			);
-			path = DTO;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		E87390E5284E5B6A00FF79E3 /* Common */ = {
@@ -303,14 +311,6 @@
 				E849A8F4283E9212001BAA36 /* WeatherService.swift */,
 			);
 			path = Protocol;
-			sourceTree = "<group>";
-		};
-		E87390F3284E8E1500FF79E3 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				E849A8ED283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		E87390F5284F0E3400FF79E3 /* MainScene */ = {
@@ -556,7 +556,6 @@
 				E848244E282E216400A180E3 /* TodoTableViewController.swift in Sources */,
 				E83432D328445C660007D23A /* SettingsTableViewSwitchCell.swift in Sources */,
 				E87157C528411D0C007D1507 /* TodoItem.swift in Sources */,
-				E849A8EE283E6A28001BAA36 /* HourlyWeatherDateFormatter.swift in Sources */,
 				E849A8F5283E9213001BAA36 /* WeatherService.swift in Sources */,
 				E8DB2840282CC23200D98141 /* TodoService.swift in Sources */,
 				E8FEDA52282C0EA90051E8B0 /* Location.swift in Sources */,
@@ -567,10 +566,11 @@
 				E85B1066283F44C100C859F4 /* CalendarDelegate.swift in Sources */,
 				E8482452282E442B00A180E3 /* Todo.xcdatamodeld in Sources */,
 				E87390E4284E5B2C00FF79E3 /* TodoStorage.swift in Sources */,
+				E85A55E42852F2C4007FB2AD /* HourlyWeatherDTO.swift in Sources */,
 				E8A27C5C2842326B00057B85 /* SettingsViewController.swift in Sources */,
 				E89E85D128042BD100DDAB0C /* SceneDelegate.swift in Sources */,
 				E85B1068283F4F6C00C859F4 /* TodoTableDelegate.swift in Sources */,
-				E86E1761282984C400D327B7 /* WeatherData.swift in Sources */,
+				E86E1761282984C400D327B7 /* WeatherData+Mapping.swift in Sources */,
 				E849A8F7283E92D9001BAA36 /* APIRequestError.swift in Sources */,
 				E8DD19A6282BFD8D00D5FC78 /* Storage.swift in Sources */,
 				E8981EA128328C510000E5F0 /* AddTodoItemViewController.swift in Sources */,
