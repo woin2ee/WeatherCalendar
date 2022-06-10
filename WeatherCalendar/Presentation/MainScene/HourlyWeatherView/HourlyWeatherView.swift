@@ -11,6 +11,7 @@ class HourlyWeatherView: UIStackView {
     let weatherService: WeatherService
     
     let displayingCount = 20
+    var currentTime: String?
     
     required init(coder: NSCoder) {
         weatherService = OpenWeatherMapService(location: Location.seoul.coordinates)
@@ -18,6 +19,8 @@ class HourlyWeatherView: UIStackView {
     }
     
     func updateView() {
+        guard needToUpdate() else { return }
+        
         removeFullyAllArrangedSubviews()
         weatherService.fetchHourlyWeatherData {
             [self] (result: Result<[HourlyWeatherDTO], APIRequestError>) in
@@ -27,6 +30,18 @@ class HourlyWeatherView: UIStackView {
             case .failure(let error):
                 debugPrint(error.localizedDescription)
             }
+        }
+    }
+    
+    func needToUpdate() -> Bool {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd HH"
+        
+        if currentTime == formatter.string(from: Date()) {
+            return false
+        } else {
+            currentTime = formatter.string(from: Date())
+            return true
         }
     }
     
