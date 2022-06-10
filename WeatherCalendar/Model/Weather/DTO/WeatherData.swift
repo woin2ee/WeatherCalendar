@@ -29,7 +29,7 @@ struct Hourly: Codable {
     let kelvin: Double
     let weather: [Weather]
     
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case dt
         case kelvin = "temp"
         case weather
