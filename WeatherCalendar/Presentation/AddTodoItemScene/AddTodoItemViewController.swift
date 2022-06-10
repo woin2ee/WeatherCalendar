@@ -11,7 +11,7 @@ class AddTodoItemViewController: UIViewController {
     @IBOutlet weak var content: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    var selectedDate: Date?
+    var selectedDate: Date!
     
     weak var calendarDelegate: CalendarDelegate?
     
@@ -23,7 +23,7 @@ class AddTodoItemViewController: UIViewController {
     private func initDatePicker() {
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.datePickerMode = .date
-        datePicker.date = self.selectedDate ?? Date()
+        datePicker.date = self.selectedDate
         datePicker.maximumDate = Calendar.current.date(byAdding: .year, value: 1000, to: Date())
         datePicker.minimumDate = Calendar.current.date(byAdding: .year, value: -1000, to: Date())
     }

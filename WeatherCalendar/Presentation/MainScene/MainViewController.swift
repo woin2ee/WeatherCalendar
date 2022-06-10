@@ -50,7 +50,8 @@ class MainViewController: UIViewController {
             let nc = segue.destination as? UINavigationController
             let vc = nc?.topViewController as? AddTodoItemViewController
             vc?.calendarDelegate = self
-            vc?.selectedDate = calendar.selectedDate
+            let selectedDate: Date = calendar.selectedDate ?? calendar.today ?? calendar.currentPage
+            vc?.selectedDate = selectedDate
         default:
             debugPrint("해당 segueId 에 대한 처리가 없습니다.")
             return
