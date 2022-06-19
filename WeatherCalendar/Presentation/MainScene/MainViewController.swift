@@ -10,24 +10,20 @@ import FSCalendar // https://github.com/WenchaoD/FSCalendar
 import SnapKit
 
 class MainViewController: UIViewController {
-    @IBOutlet weak var calendar: FSCalendar!
-    @IBOutlet weak var hourlyWeatherView: HourlyWeatherView!
-    @IBOutlet weak var pullDownMenuButton: UIBarButtonItem!
     
-    weak var todoTableDelegate: TodoTableDelegate?
-    
-    var titleFormatter: DateFormatter {
-        let fm = DateFormatter()
-        fm.locale = Locale(identifier: "ko_KR")
-        fm.timeZone = TimeZone(abbreviation: "KST")
-        fm.dateFormat = "yyyy년 M월"
-        return fm
+    @IBOutlet private weak var calendar: FSCalendar! {
+        didSet {
+            calendar.dataSource = self
+            calendar.delegate = self
+        }
     }
+    @IBOutlet private weak var hourlyWeatherView: HourlyWeatherView!
+    @IBOutlet private weak var pullDownMenuButton: UIBarButtonItem!
+    
+    private weak var todoTableDelegate: TodoTableDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        calendar.dataSource = self
-        calendar.delegate = self
         
         todoTableDelegate = self.children.first as? TodoTableViewController
         
@@ -92,6 +88,14 @@ class MainViewController: UIViewController {
     }
     
     func updateNavigationTitle() {
+        var titleFormatter: DateFormatter {
+            let fm = DateFormatter()
+            fm.locale = Locale(identifier: "ko_KR")
+            fm.timeZone = TimeZone(abbreviation: "KST")
+            fm.dateFormat = "yyyy년 M월"
+            return fm
+        }
+        
         let currentDate = titleFormatter.string(from: calendar.currentPage)
         self.navigationItem.title = currentDate
     }
@@ -100,6 +104,7 @@ class MainViewController: UIViewController {
 // MARK: - FSCalendar DataSource & Delegate
 
 extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
+    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         todoTableDelegate?.loadTodoList(selected: date)
     }
@@ -119,6 +124,7 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
 // MARK: - CalendarDelegate 구현
 
 extension MainViewController: CalendarDelegate {
+    
     func updateEventDot() {
         calendar.reloadData()
     }

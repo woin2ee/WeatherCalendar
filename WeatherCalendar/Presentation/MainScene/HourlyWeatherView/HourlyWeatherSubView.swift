@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 struct HourlyWeatherSubView {
+    
     static func of(date: String, kelvin: Double, iconImg: UIImage?) -> UIView {
         let hourLabel: UILabel = {
             let lbl = UILabel()

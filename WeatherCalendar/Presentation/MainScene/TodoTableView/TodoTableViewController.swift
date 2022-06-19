@@ -8,17 +8,21 @@
 import UIKit
 
 class TodoTableViewController: UIViewController {
-    @IBOutlet weak var todoTable: UITableView!
+    @IBOutlet weak var todoTable: UITableView! {
+        didSet {
+            todoTable.dataSource = self
+            todoTable.delegate = self
+        }
+    }
     
     var todoList = [TodoItem]()
     
     weak var calendarDelegate: CalendarDelegate?
     
+    private let todoService = TodoService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        todoTable.dataSource = self
-        todoTable.delegate = self
-        
         reloadTodoList(selected: Date())
     }
     
@@ -27,7 +31,7 @@ class TodoTableViewController: UIViewController {
     }
     
     func reloadTodoList(selected date: Date?) {
-        todoList = TodoService().fetchList(by: date ?? Date())
+        todoList = todoService.fetchList(by: date ?? Date())
         todoTable.reloadSections(IndexSet(0...0), with: .none)
     }
 }
@@ -52,7 +56,7 @@ extension TodoTableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "삭제") { [self] in
             let targetItem = todoList[indexPath.row]
-            TodoService().delete(item: targetItem)
+            todoService.delete(item: targetItem)
             reloadTodoList(selected: targetItem.date)
             if todoList.isEmpty {
                 calendarDelegate?.updateEventDot()

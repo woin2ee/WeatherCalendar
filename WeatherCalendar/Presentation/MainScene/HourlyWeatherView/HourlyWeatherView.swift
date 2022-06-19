@@ -8,10 +8,11 @@
 import UIKit
 
 class HourlyWeatherView: UIStackView {
-    let weatherService: WeatherService
     
-    let displayingCount = 20
-    var currentTime: String?
+    private let weatherService: WeatherService
+    
+    private let displayingCount = 20
+    private var currentTime: String?
     
     required init(coder: NSCoder) {
         weatherService = OpenWeatherMapService(location: Location.seoul.coordinates)
