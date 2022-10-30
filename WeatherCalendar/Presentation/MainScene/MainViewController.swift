@@ -9,7 +9,7 @@ import UIKit
 import FSCalendar // https://github.com/WenchaoD/FSCalendar
 import SnapKit
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
     @IBOutlet private weak var calendar: FSCalendar! {
         didSet {
