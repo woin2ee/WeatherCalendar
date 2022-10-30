@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HourlyWeatherView: UIStackView {
+final class HourlyWeatherView: UIStackView {
     
     private let weatherService: WeatherService
     
