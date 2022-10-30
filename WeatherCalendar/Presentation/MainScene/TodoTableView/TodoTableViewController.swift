@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TodoTableViewController: UIViewController {
+final class TodoTableViewController: UIViewController {
     @IBOutlet weak var todoTable: UITableView! {
         didSet {
             todoTable.dataSource = self
